@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepaPráctica | Module 1: Matter & Measurement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-indigo-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="bg-amber-400 text-indigo-950 p-1.5 rounded-lg font-extrabold"><i class="fa-solid fa-flask-vial"></i></div>
+                <span class="font-extrabold text-lg">Prepa<span class="text-amber-400">Práctica</span></span>
+            </a>
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="index.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">Home</a>
+                <a href="matter.html" class="bg-indigo-800 text-white px-3 py-2 rounded-lg text-sm font-semibold">1. Matter & Measure</a>
+                <a href="atoms.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">2. Atomic Structure</a>
+                <a href="electrons.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">3. Electrons & Trends</a>
+                <a href="nomenclature.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">4. Nomenclature</a>
+                <a href="exam_sim.html" class="bg-amber-400 hover:bg-amber-300 text-indigo-950 px-3 py-2 rounded-lg text-sm font-extrabold">Mock Exam</a>
+            </div>
+            <div class="text-xs bg-indigo-950 px-3 py-1.5 rounded-lg border border-indigo-700 font-bold text-amber-300">
+                Module 1 Mastery: <span id="modBadge">0/40</span>
+            </div>
+        </div>
+        <div class="md:hidden bg-indigo-950 px-3 py-2 flex overflow-x-auto space-x-2 text-xs">
+            <a href="index.html" class="text-indigo-200 px-3 py-1 rounded-lg">Home</a>
+            <a href="matter.html" class="bg-indigo-700 text-white px-3 py-1 rounded-lg font-semibold">1. Matter</a>
+            <a href="atoms.html" class="text-indigo-200 px-3 py-1 rounded-lg">2. Atoms</a>
+            <a href="electrons.html" class="text-indigo-200 px-3 py-1 rounded-lg">3. Electrons</a>
+            <a href="nomenclature.html" class="text-indigo-200 px-3 py-1 rounded-lg">4. Nomenclature</a>
+            <a href="exam_sim.html" class="bg-amber-400 text-indigo-950 px-3 py-1 rounded-lg font-extrabold">Mock Exam</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-sky-900 text-white py-8 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-sky-300 text-xs font-bold uppercase tracking-wider mb-1">Section 1 of 4 • 8 Rules × 5 Variations</div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold">Measurement, Matter Classification & Conservation of Mass</h1>
+            <p class="text-sky-100 text-sm mt-2">Switch between Examples 1–5 inside each rule to master every variation before exam day. Wrong answers unlock Socratic clues without revealing the key.</p>
+        </div>
+    </header>
+
+    <!-- Exercises Container -->
+    <main id="rulesContainer" class="max-w-5xl mx-auto px-4 py-8 space-y-8 flex-grow w-full"></main>
+
+    <!-- Bottom Navigation -->
+    <div class="max-w-5xl mx-auto px-4 pb-10 w-full flex justify-between">
+        <a href="index.html" class="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-5 py-2.5 rounded-xl text-sm transition">
+            <i class="fa-solid fa-arrow-left mr-2"></i>Back to Home
+        </a>
+        <a href="atoms.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2.5 rounded-xl text-sm shadow transition">
+            Next: Module 2 (Atoms)<i class="fa-solid fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+
+    <script>
+        const MODULE_PREFIX = 'm1_';
+        const rulesData = [
+            {
+                ruleNum: 1,
+                title: "SI Base Units & Physical Quantities",
+                concept: "Identify the fundamental physical quantity represented by International System (SI) units (m, kg, s, K, mol, A, cd) and derived laboratory units.",
+                hint: "Connect the unit symbol to what it physically measures: Kelvin (K) = thermodynamic temperature; meters (m) = length; seconds (s) = time; kilograms (kg) = mass; moles (mol) = amount of substance.",
+                examples: [
+                    {
+                        q: "A chemical reaction requires heating a sample until it reaches 385 K. What fundamental physical quantity does this measurement represent?",
+                        options: ["Heat energy", "Temperature", "Amount of substance", "Pressure"],
+                        correct: 1,
+                        whyWrong: ["Heat energy is measured in Joules (J), not Kelvin.", null, "Amount of substance is measured in moles (mol).", "Pressure is measured in Pascals (Pa) or atmospheres (atm)."]
+                    },
+                    {
+                        q: "A student records the duration of an effervescent tablet dissolving as 48.5 s. Which SI physical quantity is being measured?",
+                        options: ["Velocity", "Frequency", "Time", "Length"],
+                        correct: 2,
+                        whyWrong: ["Velocity is distance divided by time (m/s).", "Frequency is measured in Hertz (s⁻¹).", null, "Length is measured in meters (m)."]
+                    },
+                    {
+                        q: "During a titration lab, a student transfers 0.0250 L of solution. Volume is a derived unit based on which SI base quantity?",
+                        options: ["Mass", "Length", "Amount of substance", "Luminous intensity"],
+                        correct: 1,
+                        whyWrong: ["Mass is measured in kilograms.", null, "Amount of substance is measured in moles.", "Luminous intensity is measured in candelas."]
+                    },
+                    {
+                        q: "An analytical balance displays a sample reading of 0.0145 kg. What physical property does this measurement describe?",
+                        options: ["Weight (force)", "Density", "Mass", "Volume"],
+                        correct: 2,
+                        whyWrong: ["Weight is a gravitational force measured in Newtons (N).", "Density is mass per unit volume (kg/m³).", null, "Volume is space occupied (m³ or L)."]
+                    },
+                    {
+                        q: "A closed flask contains 1.25 mol of nitrogen gas. What does this SI measurement indicate?",
+                        options: ["The mass in grams", "The amount of substance (number of entities)", "The gas pressure", "The molecular speed"],
+                        correct: 1,
+                        whyWrong: ["Mass is measured in grams or kilograms.", null, "Pressure is force per unit area.", "Molecular speed is measured in m/s."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 2,
+                title: "Accuracy vs. Precision in Experimental Data",
+                concept: "Accuracy measures how close measurements are to the true/reference value. Precision measures how close repeated measurements are to each other (reproducibility).",
+                hint: "Compare the average of each balance to the Reference Value (accuracy), then check the spread/range between the 3 trials of each balance (precision).",
+                examples: [
+                    {
+                        q: "Reference mass of a calibration weight: 150.00 g.\nBalance X: 149.99 g, 150.01 g, 150.00 g | Balance Y: 142.10 g, 142.11 g, 142.09 g.\nWhich statement best describes both balances?",
+                        options: ["Both balances are accurate and precise.", "Balance X is accurate and precise; Balance Y is precise but not accurate.", "Balance X is precise only; Balance Y is accurate only.", "Neither balance is precise."],
+                        correct: 1,
+                        whyWrong: ["Balance Y's average (~142.10 g) is far from 150.00 g, so it lacks accuracy.", null, "Balance X hits 150.00 g right on target!", "Both sets of trials have a tiny spread of only 0.02 g, meaning both are very precise."]
+                    },
+                    {
+                        q: "True boiling point of ethanol: 78.4 °C.\nThermometer A: 72.0 °C, 84.5 °C, 78.7 °C | Thermometer B: 78.3 °C, 78.4 °C, 78.5 °C.\nEvaluate both instruments:",
+                        options: ["Thermometer A is neither accurate nor precise; Thermometer B is both accurate and precise.", "Both thermometers are accurate.", "Thermometer A is precise; Thermometer B is accurate only.", "Both instruments are inaccurate."],
+                        correct: 0,
+                        whyWrong: [null, "Thermometer A swings wildly by 12.5 °C, making its individual readings unreliable.", "A 12.5 °C spread is not precise.", "Thermometer B is both tightly grouped and centered on 78.4 °C."]
+                    },
+                    {
+                        q: "True density of copper: 8.96 g/cm³.\nStudent 1: 8.10, 8.95, 9.83 g/cm³ (Avg = 8.96 g/cm³) | Student 2: 8.50, 8.51, 8.49 g/cm³.\nWhich conclusion is correct?",
+                        options: ["Student 1 has high precision; Student 2 has high accuracy.", "Student 1's average is accurate but lacks precision; Student 2 is precise but inaccurate.", "Both students are accurate and precise.", "Student 2 is neither accurate nor precise."],
+                        correct: 1,
+                        whyWrong: ["Student 1's values range from 8.10 to 9.83—very poor precision!", null, "Neither student achieved both high accuracy and high precision.", "Student 2's trials only vary by 0.02 g/cm³, showing strong precision."]
+                    },
+                    {
+                        q: "Target volume: 25.00 mL.\nPipette 1: 24.98 mL, 25.02 mL, 25.00 mL | Pipette 2: 23.10 mL, 26.80 mL, 21.40 mL.\nSelect the best evaluation:",
+                        options: ["Pipette 1 is accurate and precise; Pipette 2 is neither accurate nor precise.", "Both pipettes are precise.", "Pipette 2 is accurate.", "Pipette 1 is inaccurate."],
+                        correct: 0,
+                        whyWrong: [null, "Pipette 2 varies by over 5 mL!", "Pipette 2's average (~23.77 mL) misses 25.00 mL.", "Pipette 1 averages 25.00 mL with minimal spread."]
+                    },
+                    {
+                        q: "Standard length of a metal rod: 50.0 cm.\nRuler A: 48.0 cm, 48.0 cm, 48.1 cm | Ruler B: 50.0 cm, 50.1 cm, 49.9 cm.\nHow do these rulers compare?",
+                        options: ["Only Ruler B is precise.", "Both rulers are precise, but only Ruler B is accurate.", "Both rulers are accurate.", "Ruler A is accurate and precise."],
+                        correct: 1,
+                        whyWrong: ["Ruler A repeats 48.0 cm consistently, so it is also precise.", null, "Ruler A is consistently off by 2.0 cm (systematic error).", "Ruler A misses the true value of 50.0 cm."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 3,
+                title: "Classification of Matter (Elements, Compounds & Mixtures)",
+                concept: "Pure substances have fixed composition (Elements = 1 type of atom; Compounds = ≥2 elements chemically bonded). Mixtures are physically blended (Homogeneous = uniform 1 phase; Heterogeneous = visible boundaries/phases).",
+                hint: "Ask two questions: (1) Are the components chemically bonded in a fixed ratio or physically mixed? (2) If physically mixed, can you see distinct parts/layers?",
+                examples: [
+                    {
+                        q: "Table salt (NaCl) always consists of sodium and chlorine chemically bonded in a 1:1 ratio, regardless of where it is mined. How is pure NaCl classified?",
+                        options: ["Element", "Compound", "Homogeneous mixture", "Heterogeneous mixture"],
+                        correct: 1,
+                        whyWrong: ["An element contains only one kind of atom (like pure Na or pure Cl₂).", null, "Mixtures have variable composition and are not chemically bonded.", "NaCl is a single pure chemical substance, not a multi-phase mixture."]
+                    },
+                    {
+                        q: "Bronze is an alloy made by melting copper and tin together in varying proportions, forming a uniform metallic solid with a single visible phase. Bronze is a:",
+                        options: ["Compound", "Element", "Homogeneous mixture", "Heterogeneous mixture"],
+                        correct: 2,
+                        whyWrong: ["Alloys do not have fixed chemical formulas; metals are physically blended.", "Bronze contains both copper and tin atoms.", null, "A single uniform phase with no visible boundaries is homogeneous."]
+                    },
+                    {
+                        q: "Italian salad dressing contains oil, vinegar, and herbs that separate into visible layers when left standing. How is it classified?",
+                        options: ["Heterogeneous mixture", "Homogeneous mixture", "Compound", "Pure substance"],
+                        correct: 0,
+                        whyWrong: [null, "Homogeneous mixtures have a single uniform phase throughout.", "Components are not chemically bonded.", "It contains multiple unbonded substances."]
+                    },
+                    {
+                        q: "A cylinder is filled exclusively with diatomic oxygen gas (O₂). Because every atom in the cylinder has 8 protons, O₂ is classified as:",
+                        options: ["A compound", "An element", "A homogeneous mixture", "A heterogeneous mixture"],
+                        correct: 1,
+                        whyWrong: ["Compounds require two or more *different* elements chemically bonded.", null, "Only one substance is present.", "Only one substance is present."]
+                    },
+                    {
+                        q: "Filtered apple juice appears completely clear and uniform throughout, consisting of water, sugars, and acids dissolved together. It is a:",
+                        options: ["Compound", "Element", "Homogeneous mixture", "Heterogeneous mixture"],
+                        correct: 2,
+                        whyWrong: ["The concentration of sugar can vary; it's a physical solution.", "It contains multiple types of molecules.", null, "Filtered juice has no suspended pulp or visible layers."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 4,
+                title: "Physical Separation Techniques",
+                concept: "Filtration separates insoluble solids from liquids; Decantation pours off a denser/immiscible liquid layer; Distillation separates liquids by boiling point; Chromatography separates dissolved pigments by mobile/stationary phase affinity.",
+                hint: "Match the physical property difference: Particle size → Filtration; Boiling point → Distillation; Immiscible density layers → Decantation; Solubility/adsorption → Chromatography.",
+                examples: [
+                    {
+                        q: "A student wants to separate a mixture of liquid ethanol (boiling point 78 °C) and liquid water (boiling point 100 °C) by heating and condensing the vapors. Which technique should be used?",
+                        options: ["Filtration", "Decantation", "Distillation", "Magnetism"],
+                        correct: 2,
+                        whyWrong: ["Both liquids pass right through filter paper.", "Ethanol and water dissolve completely in one another (miscible).", null, "Neither liquid is magnetic."]
+                    },
+                    {
+                        q: "A suspension of insoluble chalk powder in water is poured through a funnel lined with porous paper, trapping the chalk while water passes through. This is:",
+                        options: ["Chromatography", "Filtration", "Sublimation", "Distillation"],
+                        correct: 1,
+                        whyWrong: ["Chromatography separates dissolved solutes on a medium.", null, "Sublimation involves a solid turning directly into a gas.", "Distillation boils liquids rather than trapping solids on a filter."]
+                    },
+                    {
+                        q: "Cooking oil floats on top of water because the two liquids are immiscible and have different densities. Using a separatory funnel to drain the bottom water layer is called:",
+                        options: ["Decantation", "Filtration", "Crystallization", "Chromatography"],
+                        correct: 0,
+                        whyWrong: [null, "Both liquids would pass through a filter.", "Crystallization forms solid crystals from a solution.", "Chromatography separates trace dissolved components."]
+                    },
+                    {
+                        q: "A forensic chemist places a drop of black ink on absorbent paper and dips the edge in solvent, watching blue, yellow, and red bands travel at different speeds. This technique is:",
+                        options: ["Distillation", "Decantation", "Filtration", "Chromatography"],
+                        correct: 3,
+                        whyWrong: ["Distillation uses boiling and condensation.", "Decantation separates immiscible bulk layers.", "Filtration traps undissolved solids.", null]
+                    },
+                    {
+                        q: "To recover dissolved table salt (NaCl) from saltwater without collecting the water, a student gently heats the solution until all water vaporizes, leaving solid crystals behind. This is:",
+                        options: ["Evaporation / Crystallization", "Decantation", "Filtration", "Magnetic separation"],
+                        correct: 0,
+                        whyWrong: [null, "Salt is completely dissolved; there are no separate layers to pour off.", "Dissolved salt ions pass through filter paper.", "Salt is non-magnetic."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 5,
+                title: "Intensive vs. Extensive Physical Properties",
+                concept: "Intensive properties do NOT depend on sample size (density, boiling point, color, hardness). Extensive properties DO depend on sample size (mass, volume, length, total energy).",
+                hint: "Imagine cutting the sample in half: if the property value stays the same, it is INTENSIVE. If the value is cut in half, it is EXTENSIVE.",
+                examples: [
+                    {
+                        q: "Pure gold has a melting point of 1,064 °C whether you test a 1-gram ring or a 10-kilogram bar. Melting point is an:",
+                        options: ["Extensive property", "Intensive property", "Chemical property", "Extrinsic variable"],
+                        correct: 1,
+                        whyWrong: ["Extensive properties change when mass or volume changes.", null, "Melting is a physical phase change, not a chemical reaction.", "Check the standard classification: Intensive vs. Extensive."]
+                    },
+                    {
+                        q: "A beaker contains 250 mL of distilled water, whereas a swimming pool contains 50,000 L. Volume is classified as an:",
+                        options: ["Intensive property", "Extensive property", "Chemical property", "Atomic property"],
+                        correct: 1,
+                        whyWrong: ["Intensive properties are independent of the amount of matter.", null, "Measuring volume does not alter chemical identity.", "Volume is a macroscopic bulk property."]
+                    },
+                    {
+                        q: "A small diamond and a large diamond both score 10 on the Mohs hardness scale and share the same refractive index. Hardness is an:",
+                        options: ["Extensive property", "Intensive property", "Chemical property", "Variable property"],
+                        correct: 1,
+                        whyWrong: ["Hardness does not increase just because the crystal is larger.", null, "Scratching tests physical resistance, not chemical reactivity.", "Hardness is constant for a pure crystalline material."]
+                    },
+                    {
+                        q: "Burning 2 kg of wood releases twice as much total thermal energy (heat) as burning 1 kg of wood. Total heat content (enthalpy) is an:",
+                        options: ["Intensive property", "Extensive property", "Inert property", "Optical property"],
+                        correct: 1,
+                        whyWrong: ["Since the value doubles when mass doubles, it depends on sample size.", null, "Burning is an active combustion process.", "Thermal energy is not an optical property."]
+                    },
+                    {
+                        q: "Aluminum metal has a shiny silver luster and high electrical conductivity regardless of wire thickness. Electrical conductivity is an:",
+                        options: ["Extensive property", "Intensive property", "Chemical change", "Nuclear property"],
+                        correct: 1,
+                        whyWrong: ["Conductivity is an intrinsic material constant (though total resistance depends on dimensions).", null, "Conducting electricity does not form a new substance.", "Conductivity involves valence electrons, not nuclear decay."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 6,
+                title: "Physical vs. Chemical Properties & Changes",
+                concept: "Physical changes alter form/state without changing chemical composition (melting, dissolving, cutting). Chemical changes/properties describe forming new substances (rusting, flammability, reactivity with acid).",
+                hint: "Ask: Are the molecules before and after still the exact same chemical formula? If YES → Physical. If new substances form → Chemical.",
+                examples: [
+                    {
+                        q: "When an iron nail is left in humid air, it reacts with oxygen to form reddish-brown iron(III) oxide (Fe₂O₃). Rusting is a:",
+                        options: ["Physical change", "Chemical change", "Phase transition", "Physical property"],
+                        correct: 1,
+                        whyWrong: ["A brand new chemical compound (Fe₂O₃) is produced.", null, "Phase transitions (like melting) keep the same chemical formula.", "The event of forming rust is a chemical change."]
+                    },
+                    {
+                        q: "Liquid acetone evaporates rapidly when spilled on a lab bench, changing from liquid C₃H₆O to gaseous C₃H₆O. Evaporation is a:",
+                        options: ["Chemical change", "Physical change", "Chemical property", "Nuclear reaction"],
+                        correct: 1,
+                        whyWrong: ["The molecules are still C₃H₆O; only intermolecular spacing changed.", null, "Evaporation is an observable process (change), and it is physical.", "The nuclei of C, H, and O are unchanged."]
+                    },
+                    {
+                        q: "Gasoline catches fire easily in the presence of a spark, producing CO₂ and H₂O. Describing gasoline as 'highly flammable' states a:",
+                        options: ["Physical property", "Chemical property", "Physical change", "Extensive property"],
+                        correct: 1,
+                        whyWrong: ["Flammability describes how a substance reacts to form new products.", null, "Flammability is a potential/tendency (property) involving chemical reaction.", "Flammability does not depend on sample size."]
+                    },
+                    {
+                        q: "A solid cube of sucrose (table sugar) is crushed into a fine powder using a mortar and pestle. Crushing is a:",
+                        options: ["Chemical change", "Physical change", "Chemical property", "Decomposition reaction"],
+                        correct: 1,
+                        whyWrong: ["Every grain is still sucrose (C₁₂H₂₂O₁₁).", null, "Crushing is an action/change, not a chemical reaction.", "No chemical bonds within the sugar molecules were broken."]
+                    },
+                    {
+                        q: "When vinegar (acetic acid) is poured onto marble (calcium carbonate), bubbles of carbon dioxide gas form and the marble dissolves. This represents a:",
+                        options: ["Physical change", "Chemical change", "Boiling process", "Sublimation process"],
+                        correct: 1,
+                        whyWrong: ["Bubbling gas production indicates a new substance (CO₂) is being generated.", null, "The gas is CO₂ formed by reaction, not boiling vinegar.", "Sublimation is a solid turning into gas without reacting."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 7,
+                title: "States of Matter & Phase Transitions",
+                concept: "Solids have fixed shape/volume; Liquids have fixed volume but take container shape; Gases expand to fill container volume. Transitions: Melting (S→L), Freezing/Solidification (L→S), Vaporization (L→G), Condensation (G→L), Sublimation (S→G), Deposition (G→S).",
+                hint: "Track the starting state and ending state carefully. Direct solid-gas transitions skip the liquid phase entirely!",
+                examples: [
+                    {
+                        q: "On a cold winter morning, water vapor in the air turns directly into solid ice crystals (frost) on a car windshield without becoming liquid water first. This phase change is:",
+                        options: ["Sublimation", "Deposition", "Condensation", "Solidification"],
+                        correct: 1,
+                        whyWrong: ["Sublimation is the opposite direction: solid → gas.", null, "Condensation turns gas into liquid, not solid.", "Solidification (freezing) starts from a liquid."]
+                    },
+                    {
+                        q: "At room temperature, mercury (Hg) has particles that slide past one another, giving it a definite volume of 10 mL that takes the bottom shape of any flask. Mercury's state is:",
+                        options: ["Solid", "Liquid", "Gas", "Plasma"],
+                        correct: 1,
+                        whyWrong: ["Solids have a rigid, fixed shape.", null, "Gases expand to fill the entire container volume.", "Plasma is an ionized gas at extreme temperatures."]
+                    },
+                    {
+                        q: "Solid iodine crystals are gently warmed in a sealed flask and immediately form a purple vapor without any liquid appearing. What phase change occurred?",
+                        options: ["Vaporization", "Melting", "Sublimation", "Deposition"],
+                        correct: 2,
+                        whyWrong: ["Vaporization starts from the liquid state.", "Melting produces a liquid.", null, "Deposition goes from gas to solid."]
+                    },
+                    {
+                        q: "Droplets of liquid water form on the outside of an ice-cold soda can on a humid summer day. Which phase change produces these droplets?",
+                        options: ["Melting", "Condensation", "Evaporation", "Sublimation"],
+                        correct: 1,
+                        whyWrong: ["The aluminum can is not melting; moisture comes from the air.", null, "Evaporation turns liquid into gas.", "Sublimation turns solid into gas."]
+                    },
+                    {
+                        q: "Molten lava cools down as it flows into the ocean, hardening into solid basalt rock. The transition from liquid to solid is called:",
+                        options: ["Condensation", "Deposition", "Solidification (Freezing)", "Sublimation"],
+                        correct: 2,
+                        whyWrong: ["Condensation starts from a gas.", "Deposition starts from a gas.", null, "Sublimation goes from solid to gas."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 8,
+                title: "Law of Conservation of Mass Calculations",
+                concept: "Lavoisier's Law: Total mass of reactants = Total mass of products in a closed chemical reaction. Simply sum all reactant masses and set equal to the sum of all product masses.",
+                hint: "Write the equation: Mass(Reactant 1) + Mass(Reactant 2) = Mass(Product 1) + Mass(Product 2). Plug in the given numbers and solve for X!",
+                examples: [
+                    {
+                        q: "In the reaction: 2H₂ + O₂ → 2H₂O, 12 g of hydrogen gas reacts completely with 96 g of oxygen gas. What total mass of water (H₂O) is produced?",
+                        options: ["84 g", "108 g", "96 g", "54 g"],
+                        correct: 1,
+                        whyWrong: ["Do not subtract; both reactants combine to form the product.", null, "You must include the 12 g of hydrogen in the total product mass.", "Conservation of mass applies to total mass, not half."]
+                    },
+                    {
+                        q: "Calcium carbonate decomposes upon heating: CaCO₃ → CaO + CO₂. If 200 g of CaCO₃ produces 112 g of CaO, how many grams of CO₂ gas are released?",
+                        options: ["312 g", "88 g", "112 g", "100 g"],
+                        correct: 1,
+                        whyWrong: ["200 g is the total starting mass; products cannot weigh more than reactants.", null, "200 g - 112 g does not equal 112 g.", "Check your subtraction: 200 - 112."]
+                    },
+                    {
+                        q: "Propane burns in oxygen: C₃H₈ + 5O₂ → 3CO₂ + 4H₂O. If 44 g of C₃H₈ reacts completely to yield 132 g of CO₂ and 72 g of H₂O, what mass of O₂ reacted?",
+                        options: ["204 g", "160 g", "248 g", "116 g"],
+                        correct: 1,
+                        whyWrong: ["204 g is the total product mass; remember to subtract the 44 g of C₃H₈!", null, "Do not add reactant and product masses together.", "Sum the products first (132 + 72), then subtract 44."]
+                    },
+                    {
+                        q: "When 56 g of iron (Fe) reacts with sulfur (S) to form 88 g of iron(II) sulfide (FeS), what mass of sulfur was consumed? (Fe + S → FeS)",
+                        options: ["144 g", "32 g", "44 g", "28 g"],
+                        correct: 1,
+                        whyWrong: ["88 g is the final product mass, so sulfur must be less than 88 g.", null, "88 - 56 is not 44.", "Check 88 - 56 carefully."]
+                    },
+                    {
+                        q: "In the neutralization HCl + NaOH → NaCl + H₂O, 73 g of HCl reacts with 80 g of NaOH to form 117 g of NaCl and water. What mass of water is formed?",
+                        options: ["153 g", "36 g", "44 g", "18 g"],
+                        correct: 1,
+                        whyWrong: ["153 g is the sum of reactants before subtracting NaCl.", null, "Check: (73 + 80) - 117.", "Remember that 2 moles of water are formed here, not 1."]
+                    }
+                ]
+            }
+        ];
+
+        // State tracking for current active example tab per rule
+        const activeExampleIdx = rulesData.map(() => 0);
+
+        function getSolvedIds() {
+            return JSON.parse(localStorage.getItem('pp_solved_ids') || '[]');
+        }
+
+        function markSolved(exId) {
+            const solved = getSolvedIds();
+            if (!solved.includes(exId)) {
+                solved.push(exId);
+                localStorage.setItem('pp_solved_ids', JSON.stringify(solved));
+            }
+            updateBadge();
+        }
+
+        function updateBadge() {
+            const solved = getSolvedIds().filter(id => id.startsWith(MODULE_PREFIX)).length;
+            document.getElementById('modBadge').textContent = `${solved}/40`;
+        }
+
+        function renderRules() {
+            const container = document.getElementById('rulesContainer');
+            const solved = getSolvedIds();
+            container.innerHTML = '';
+
+            rulesData.forEach((rule, rIdx) => {
+                const exIdx = activeExampleIdx[rIdx];
+                const ex = rule.examples[exIdx];
+                const exId = `${MODULE_PREFIX}r${rule.ruleNum}_e${exIdx + 1}`;
+                const isSolved = solved.includes(exId);
+
+                // Count how many of the 5 variations are solved for this rule
+                let ruleSolvedCount = 0;
+                for (let i = 1; i <= 5; i++) {
+                    if (solved.includes(`${MODULE_PREFIX}r${rule.ruleNum}_e${i}`)) ruleSolvedCount++;
+                }
+
+                const card = document.createElement('section');
+                card.className = "bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden";
+                card.innerHTML = `
+                    <div class="bg-slate-900 text-white px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Rule ${rule.ruleNum} of 8</span>
+                            <h2 class="text-lg font-extrabold">${rule.title}</h2>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs bg-slate-800 px-3 py-1 rounded-full text-slate-300">
+                                Rule Mastery: <strong class="text-emerald-400">${ruleSolvedCount}/5</strong>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 space-y-5">
+                        <!-- Concept Summary -->
+                        <div class="bg-sky-50 border-l-4 border-sky-500 p-3.5 rounded-r-xl text-xs sm:text-sm text-sky-950">
+                            <strong>Core Principle:</strong> ${rule.concept}
+                        </div>
+
+                        <!-- 5 Variations Selector Tabs -->
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="text-xs font-bold text-slate-500 uppercase mr-1">Practice Variations:</span>
+                            ${[0, 1, 2, 3, 4].map(i => {
+                                const varId = `${MODULE_PREFIX}r${rule.ruleNum}_e${i + 1}`;
+                                const varDone = solved.includes(varId);
+                                const isActive = i === exIdx;
+                                return `
+                                    <button onclick="selectVariation(${rIdx}, ${i})"
+                                        class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 border
+                                        ${isActive ? 'bg-indigo-600 text-white border-indigo-600 shadow' : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'}">
+                                        <span>Example ${i + 1}</span>
+                                        ${varDone ? '<i class="fa-solid fa-circle-check text-emerald-400"></i>' : ''}
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Question Prompt -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div class="flex justify-between items-start gap-2 mb-2">
+                                <span class="text-xs font-extrabold text-indigo-600 uppercase">Exercise ${rule.ruleNum}.${exIdx + 1}</span>
+                                ${isSolved ? '<span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full"><i class="fa-solid fa-check mr-1"></i>Mastered</span>' : ''}
+                            </div>
+                            <p class="text-slate-900 font-semibold text-sm sm:text-base whitespace-pre-line leading-relaxed">${ex.q}</p>
+                        </div>
+
+                        <!-- Options Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="options_${rIdx}">
+                            ${ex.options.map((opt, oIdx) => {
+                                const letters = ['A', 'B', 'C', 'D'];
+                                return `
+                                    <button onclick="checkAnswer(${rIdx}, ${oIdx})"
+                                        id="btn_${rIdx}_${oIdx}"
+                                        class="text-left p-3.5 rounded-xl border-2 border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/40 transition flex items-start gap-3 text-sm font-medium text-slate-800">
+                                        <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 font-extrabold flex items-center justify-center shrink-0 text-xs">${letters[oIdx]}</span>
+                                        <span class="pt-0.5">${opt}</span>
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Socratic Feedback & Hint Box -->
+                        <div id="feedback_${rIdx}" class="hidden rounded-xl p-4 text-sm"></div>
+
+                        <!-- Manual Hint Button -->
+                        <div class="flex justify-end">
+                            <button onclick="showHint(${rIdx})" class="text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-lightbulb text-amber-500"></i> Need a Socratic Hint?
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function selectVariation(rIdx, exIdx) {
+            activeExampleIdx[rIdx] = exIdx;
+            renderRules();
+        }
+
+        function showHint(rIdx) {
+            const rule = rulesData[rIdx];
+            const fb = document.getElementById(`feedback_${rIdx}`);
+            fb.className = "rounded-xl p-4 text-sm bg-amber-50 border border-amber-300 text-amber-950 block";
+            fb.innerHTML = `
+                <div class="font-bold flex items-center gap-2 mb-1"><i class="fa-solid fa-compass text-amber-600"></i> Guiding Hint (Rule ${rule.ruleNum}):</div>
+                <p>${rule.hint}</p>
+            `;
+        }
+
+        function checkAnswer(rIdx, chosenIdx) {
+            const rule = rulesData[rIdx];
+            const exIdx = activeExampleIdx[rIdx];
+            const ex = rule.examples[exIdx];
+            const fb = document.getElementById(`feedback_${rIdx}`);
+
+            // Reset button borders
+            for (let i = 0; i < 4; i++) {
+                const b = document.getElementById(`btn_${rIdx}_${i}`);
+                b.classList.remove('border-rose-500', 'bg-rose-50', 'border-emerald-500', 'bg-emerald-50');
+            }
+
+            const chosenBtn = document.getElementById(`btn_${rIdx}_${chosenIdx}`);
+
+            if (chosenIdx === ex.correct) {
+                chosenBtn.classList.add('border-emerald-500', 'bg-emerald-50');
+                const exId = `${MODULE_PREFIX}r${rule.ruleNum}_e${exIdx + 1}`;
+                markSolved(exId);
+
+                fb.className = "rounded-xl p-4 text-sm bg-emerald-50 border border-emerald-300 text-emerald-950 block";
+                fb.innerHTML = `
+                    <div class="font-extrabold text-emerald-800 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>
+                        <span>Excellent reasoning! You solved Example ${exIdx + 1} correctly.</span>
+                    </div>
+                    <p class="mt-1 text-xs text-emerald-800">Try the remaining variations (Examples 1–5) above to lock in 100% mastery of this rule.</p>
+                `;
+            } else {
+                // NEVER reveal the correct answer! Give targeted diagnostic feedback + hint
+                chosenBtn.classList.add('border-rose-500', 'bg-rose-50');
+                const diagnostic = ex.whyWrong[chosenIdx] || "Re-examine the core principle above and check every detail in the prompt.";
+
+                fb.className = "rounded-xl p-4 text-sm bg-rose-50 border border-rose-300 text-rose-950 block";
+                fb.innerHTML = `
+                    <div class="font-extrabold text-rose-800 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i>
+                        <span>Not quite — let's analyze why that choice doesn't fit:</span>
+                    </div>
+                    <p class="mt-1 font-medium">${diagnostic}</p>
+                    <div class="mt-2 pt-2 border-t border-rose-200 text-xs text-rose-900">
+                        <strong>Clue:</strong> ${rule.hint}
+                    </div>
+                `;
+            }
+        }
+
+        window.onload = () => {
+            updateBadge();
+            renderRules();
+        };
+    </script>
+</body>
+</html>

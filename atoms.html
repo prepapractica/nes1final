@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepaPráctica | Module 2: Atomic Structure & Isotopes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-indigo-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="bg-amber-400 text-indigo-950 p-1.5 rounded-lg font-extrabold"><i class="fa-solid fa-flask-vial"></i></div>
+                <span class="font-extrabold text-lg">Prepa<span class="text-amber-400">Práctica</span></span>
+            </a>
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="index.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">Home</a>
+                <a href="matter.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">1. Matter & Measure</a>
+                <a href="atoms.html" class="bg-indigo-800 text-white px-3 py-2 rounded-lg text-sm font-semibold">2. Atomic Structure</a>
+                <a href="electrons.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">3. Electrons & Trends</a>
+                <a href="nomenclature.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">4. Nomenclature</a>
+                <a href="exam_sim.html" class="bg-amber-400 hover:bg-amber-300 text-indigo-950 px-3 py-2 rounded-lg text-sm font-extrabold">Mock Exam</a>
+            </div>
+            <div class="text-xs bg-indigo-950 px-3 py-1.5 rounded-lg border border-indigo-700 font-bold text-amber-300">
+                Module 2 Mastery: <span id="modBadge">0/40</span>
+            </div>
+        </div>
+        <div class="md:hidden bg-indigo-950 px-3 py-2 flex overflow-x-auto space-x-2 text-xs">
+            <a href="index.html" class="text-indigo-200 px-3 py-1 rounded-lg">Home</a>
+            <a href="matter.html" class="text-indigo-200 px-3 py-1 rounded-lg">1. Matter</a>
+            <a href="atoms.html" class="bg-indigo-700 text-white px-3 py-1 rounded-lg font-semibold">2. Atoms</a>
+            <a href="electrons.html" class="text-indigo-200 px-3 py-1 rounded-lg">3. Electrons</a>
+            <a href="nomenclature.html" class="text-indigo-200 px-3 py-1 rounded-lg">4. Nomenclature</a>
+            <a href="exam_sim.html" class="bg-amber-400 text-indigo-950 px-3 py-1 rounded-lg font-extrabold">Mock Exam</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-emerald-900 text-white py-8 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-emerald-300 text-xs font-bold uppercase tracking-wider mb-1">Section 2 of 4 • 8 Rules × 5 Variations</div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold">Atomic Theory, Ions, Neutrons & Average Atomic Mass</h1>
+            <p class="text-emerald-100 text-sm mt-2">Have a calculator and Periodic Table ready! Every rule provides 5 distinct exercises with diagnostic hints.</p>
+        </div>
+    </header>
+
+    <main id="rulesContainer" class="max-w-5xl mx-auto px-4 py-8 space-y-8 flex-grow w-full"></main>
+
+    <div class="max-w-5xl mx-auto px-4 pb-10 w-full flex justify-between">
+        <a href="matter.html" class="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-5 py-2.5 rounded-xl text-sm transition">
+            <i class="fa-solid fa-arrow-left mr-2"></i>Prev: Module 1 (Matter)
+        </a>
+        <a href="electrons.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2.5 rounded-xl text-sm shadow transition">
+            Next: Module 3 (Electrons)<i class="fa-solid fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+
+    <script>
+        const MODULE_PREFIX = 'm2_';
+        const rulesData = [
+            {
+                ruleNum: 1,
+                title: "Historical Atomic Models",
+                concept: "Dalton (indivisible solid sphere); Thomson (cathode ray tube, electrons embedded in positive sphere / plum pudding); Rutherford (gold foil, dense positive nucleus & mostly empty space); Bohr (quantized circular energy levels/orbits).",
+                hint: "Match the key discovery: Solid indivisible ball → Dalton; Electrons discovered → Thomson; Gold foil & nucleus → Rutherford; Quantized orbits/shells → Bohr.",
+                examples: [
+                    {
+                        q: "Using cathode ray tubes, J.J. Thomson discovered negatively charged subatomic particles and proposed which atomic model?",
+                        options: ["Nuclear model", "Plum-pudding model", "Planetary quantized model", "Solid indivisible sphere model"],
+                        correct: 1,
+                        whyWrong: ["The nuclear model was proposed later by Ernest Rutherford.", null, "Quantized planetary orbits belong to Niels Bohr.", "The solid indivisible sphere was John Dalton's model."]
+                    },
+                    {
+                        q: "Niels Bohr improved upon Rutherford's atom by proposing that electrons travel around the nucleus in fixed circular paths with specific quantized energies. This is known as the:",
+                        options: ["Plum-pudding model", "Solid sphere model", "Planetary model", "Quantum cloud model"],
+                        correct: 2,
+                        whyWrong: ["Thomson's model had no nucleus or orbits.", "Dalton's model had no electrons.", null, "Schrödinger introduced probability orbitals, whereas Bohr used circular orbits."]
+                    },
+                    {
+                        q: "During the gold foil experiment, most alpha particles passed straight through undeflected, while a tiny fraction bounced back sharply. This proved the existence of:",
+                        options: ["Negatively charged electrons", "A tiny, extremely dense positively charged nucleus", "Isotopes with different neutrons", "Quantized electron sublevels"],
+                        correct: 1,
+                        whyWrong: ["Electrons have too little mass to deflect heavy alpha particles.", null, "Neutrons were discovered later by James Chadwick.", "Sublevels were developed in quantum mechanics."]
+                    },
+                    {
+                        q: "Which postulate belonged to John Dalton's 1803 atomic theory before subatomic particles were discovered?",
+                        options: ["Atoms consist mostly of empty space.", "Atoms are tiny, indivisible particles that cannot be created or destroyed in chemical reactions.", "Electrons jump between energy levels by emitting photons.", "Positive charge is spread uniformly like pudding."],
+                        correct: 1,
+                        whyWrong: ["Empty space was Rutherford's discovery.", null, "Photon emission between levels was Bohr's concept.", "Uniform positive charge was Thomson's model."]
+                    },
+                    {
+                        q: "Which scientist is credited with discovering the neutral subatomic particle (the neutron) inside the nucleus in 1932?",
+                        options: ["James Chadwick", "J.J. Thomson", "John Dalton", "Niels Bohr"],
+                        correct: 0,
+                        whyWrong: [null, "Thomson discovered the electron.", "Dalton proposed the indivisible atom.", "Bohr proposed quantized energy shells."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 2,
+                title: "Electrons in Anions (Negatively Charged Ions)",
+                concept: "Anions gain electrons. Electrons = Atomic Number (Z) + Magnitude of Negative Charge.",
+                hint: "Look up the element's Atomic Number (Z = protons) on the Periodic Table. Since electrons are negative, a negative charge means the atom GAINED extra electrons.",
+                examples: [
+                    {
+                        q: "How many electrons are contained in a sulfide ion, S²⁻? (Atomic number of Sulfur = 16)",
+                        options: ["14", "16", "18", "32"],
+                        correct: 2,
+                        whyWrong: ["14 would mean sulfur LOST 2 electrons (forming S²⁺).", "16 is the number of electrons in a neutral sulfur atom.", null, "32 is the atomic mass of sulfur, not its electron count."]
+                    },
+                    {
+                        q: "How many total electrons are present in a nitride ion, N³⁻? (Atomic number of Nitrogen = 7)",
+                        options: ["4", "7", "10", "14"],
+                        correct: 2,
+                        whyWrong: ["A 3⁻ charge means gaining 3 electrons, not losing 3.", "7 is for a neutral nitrogen atom.", null, "14 is nitrogen's mass number."]
+                    },
+                    {
+                        q: "Determine the number of electrons in an iodide ion, I⁻. (Atomic number of Iodine = 53)",
+                        options: ["52", "53", "54", "127"],
+                        correct: 2,
+                        whyWrong: ["52 would correspond to a +1 cation.", "53 is for a neutral iodine atom.", null, "127 is the mass number of iodine."]
+                    },
+                    {
+                        q: "How many electrons are in a phosphide ion, P³⁻? (Atomic number of Phosphorus = 15)",
+                        options: ["12", "15", "18", "31"],
+                        correct: 2,
+                        whyWrong: ["Do not subtract 3; negative ions have more electrons than protons.", "15 is the proton count.", null, "31 is the atomic mass."]
+                    },
+                    {
+                        q: "An oxide ion (O²⁻) has an atomic number of 8. How many electrons surround its nucleus?",
+                        options: ["6", "8", "10", "16"],
+                        correct: 2,
+                        whyWrong: ["6 would be O²⁺.", "8 is neutral oxygen.", null, "16 is oxygen's mass number."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 3,
+                title: "Electrons in Cations (Positively Charged Ions)",
+                concept: "Cations lose electrons. Electrons = Atomic Number (Z) − Positive Charge.",
+                hint: "Find the Atomic Number (Z = protons). A positive charge (+n) means the neutral atom LOST n negatively charged electrons.",
+                examples: [
+                    {
+                        q: "How many electrons are contained in an aluminum ion, Al³⁺? (Atomic number of Al = 13)",
+                        options: ["10", "13", "16", "27"],
+                        correct: 0,
+                        whyWrong: [null, "13 is for a neutral aluminum atom.", "16 would mean gaining 3 electrons (Al³⁻).", "27 is aluminum's mass number."]
+                    },
+                    {
+                        q: "Calculate the number of electrons in a calcium cation, Ca²⁺. (Atomic number of Ca = 20)",
+                        options: ["22", "20", "18", "40"],
+                        correct: 2,
+                        whyWrong: ["22 would be a 2⁻ anion.", "20 is neutral calcium.", null, "40 is calcium's mass number."]
+                    },
+                    {
+                        q: "How many electrons are present in an iron(III) ion, Fe³⁺? (Atomic number of Fe = 26)",
+                        options: ["29", "26", "23", "56"],
+                        correct: 2,
+                        whyWrong: ["29 would mean gaining 3 electrons.", "26 is the number of protons.", null, "56 is iron's mass number."]
+                    },
+                    {
+                        q: "Determine the electron count in a potassium ion, K⁺. (Atomic number of K = 19)",
+                        options: ["18", "19", "20", "39"],
+                        correct: 0,
+                        whyWrong: [null, "19 is neutral potassium.", "20 would be K⁻.", "39 is potassium's mass number."]
+                    },
+                    {
+                        q: "How many electrons remain in a barium ion, Ba²⁺? (Atomic number of Ba = 56)",
+                        options: ["58", "56", "54", "137"],
+                        correct: 2,
+                        whyWrong: ["58 would mean gaining 2 electrons.", "56 is the proton count.", null, "137 is barium's mass number."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 4,
+                title: "Calculating Neutrons in Specific Isotopes",
+                concept: "In hyphen notation (Element-A), A is the Mass Number (Protons + Neutrons). Therefore: Neutrons = Mass Number (A) − Atomic Number (Z).",
+                hint: "Look up the element's Atomic Number (Z) on the Periodic Table, then subtract Z from the isotope's mass number written after the hyphen.",
+                examples: [
+                    {
+                        q: "How many neutrons are in the nucleus of an isotope of Uranium-235? (Atomic number of U = 92)",
+                        options: ["92", "143", "235", "327"],
+                        correct: 1,
+                        whyWrong: ["92 is the number of protons.", null, "235 is the total mass number (protons + neutrons).", "Do not add 235 + 92; subtract them!"]
+                    },
+                    {
+                        q: "What is the number of neutrons in an atom of Carbon-14? (Atomic number of C = 6)",
+                        options: ["6", "7", "8", "14"],
+                        correct: 2,
+                        whyWrong: ["6 is the number of protons.", "7 is the neutron count for Carbon-13.", null, "14 is the sum of protons and neutrons."]
+                    },
+                    {
+                        q: "Calculate the number of neutrons in Cobalt-60. (Atomic number of Co = 27)",
+                        options: ["27", "32", "33", "60"],
+                        correct: 2,
+                        whyWrong: ["27 is the number of protons.", "Check your subtraction: 60 - 27.", null, "60 is the mass number."]
+                    },
+                    {
+                        q: "How many neutrons are present in an isotope of Iodine-131? (Atomic number of I = 53)",
+                        options: ["53", "74", "78", "131"],
+                        correct: 2,
+                        whyWrong: ["53 is the proton count.", "74 corresponds to Iodine-127.", null, "131 is the mass number."]
+                    },
+                    {
+                        q: "Determine the number of neutrons in Lead-208. (Atomic number of Pb = 82)",
+                        options: ["82", "125", "126", "208"],
+                        correct: 2,
+                        whyWrong: ["82 is the atomic number.", "Check 208 - 82 again.", null, "208 is the total mass number."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 5,
+                title: "Determining Mass Number from Protons & Neutrons",
+                concept: "Mass Number (A) is always a whole number equal to the sum of Protons (Z) + Neutrons (N).",
+                hint: "Find the element's Atomic Number (Z = protons) on the Periodic Table, then ADD the given number of neutrons to Z.",
+                examples: [
+                    {
+                        q: "What is the mass number of a Zinc atom that contains 38 neutrons? (Atomic number of Zn = 30)",
+                        options: ["30", "38", "65", "68"],
+                        correct: 3,
+                        whyWrong: ["30 is only the proton count.", "38 is only the neutron count.", "65.38 is the periodic table average, not this specific isotope.", null]
+                    },
+                    {
+                        q: "An atom of Silver (Z = 47) contains 62 neutrons. What is its mass number?",
+                        options: ["107", "108", "109", "15"],
+                        correct: 2,
+                        whyWrong: ["107 would have 60 neutrons.", "108 would have 61 neutrons.", null, "Add protons + neutrons (47 + 62), do not subtract."]
+                    },
+                    {
+                        q: "What is the mass number of a Gold atom (Z = 79) that has 118 neutrons?",
+                        options: ["197", "196", "198", "39"],
+                        correct: 0,
+                        whyWrong: [null, "Check 79 + 118.", "Check 79 + 118.", "Do not subtract; Mass Number = Protons + Neutrons."]
+                    },
+                    {
+                        q: "A Xenon atom (Z = 54) has 77 neutrons in its nucleus. What is its mass number?",
+                        options: ["129", "131", "132", "23"],
+                        correct: 1,
+                        whyWrong: ["Check 54 + 77.", null, "Check 54 + 77.", "Add Z + N instead of subtracting."]
+                    },
+                    {
+                        q: "Calculate the mass number of a Phosphorus atom (Z = 15) containing 17 neutrons.",
+                        options: ["31", "32", "33", "2"],
+                        correct: 1,
+                        whyWrong: ["31 would have 16 neutrons.", null, "33 would have 18 neutrons.", "Mass number is the sum of protons and neutrons."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 6,
+                title: "Reading Nuclide Symbols (ᴬ_Z X^q)",
+                concept: "In standard nuclear notation ᴬ_Z X^q: Top-left (A) = Mass Number; Bottom-left (Z) = Atomic Number (protons); Top-right (q) = Ionic Charge.",
+                hint: "Remember: Protons = Z (bottom-left); Neutrons = A − Z (top minus bottom); Electrons = Z − charge.",
+                examples: [
+                    {
+                        q: "How many protons, neutrons, and electrons are in the nuclide ⁵⁶₂₆Fe²⁺?",
+                        options: ["26 p⁺, 30 n⁰, 24 e⁻", "26 p⁺, 56 n⁰, 26 e⁻", "30 p⁺, 26 n⁰, 24 e⁻", "26 p⁺, 30 n⁰, 28 e⁻"],
+                        correct: 0,
+                        whyWrong: [null, "56 is A (protons + neutrons), not neutrons alone.", "Protons = 26 (bottom number), not 30.", "A +2 charge means 2 electrons were lost (26 - 2 = 24), not gained."]
+                    },
+                    {
+                        q: "Identify the subatomic particles in ⁸⁰₃₅Br⁻:",
+                        options: ["35 p⁺, 45 n⁰, 36 e⁻", "35 p⁺, 80 n⁰, 35 e⁻", "45 p⁺, 35 n⁰, 34 e⁻", "35 p⁺, 45 n⁰, 34 e⁻"],
+                        correct: 0,
+                        whyWrong: [null, "Neutrons = 80 - 35 = 45.", "Protons = 35.", "A 1⁻ charge means 1 electron was gained (35 + 1 = 36)."]
+                    },
+                    {
+                        q: "How many protons, neutrons, and electrons are in ³²₁₆S²⁻?",
+                        options: ["16 p⁺, 16 n⁰, 14 e⁻", "16 p⁺, 16 n⁰, 18 e⁻", "16 p⁺, 32 n⁰, 18 e⁻", "18 p⁺, 14 n⁰, 16 e⁻"],
+                        correct: 1,
+                        whyWrong: ["2⁻ means gaining 2 electrons (16 + 2 = 18).", null, "Neutrons = 32 - 16 = 16.", "Protons are fixed at Z = 16."]
+                    },
+                    {
+                        q: "Determine the particle counts for ²⁷₁₃Al³⁺:",
+                        options: ["13 p⁺, 14 n⁰, 10 e⁻", "13 p⁺, 14 n⁰, 16 e⁻", "14 p⁺, 13 n⁰, 10 e⁻", "13 p⁺, 27 n⁰, 10 e⁻"],
+                        correct: 0,
+                        whyWrong: [null, "3⁺ means losing 3 electrons (13 - 3 = 10).", "Z = 13 is the proton count.", "Neutrons = 27 - 13 = 14."]
+                    },
+                    {
+                        q: "Which nuclide symbol represents an ion with 20 protons, 24 neutrons, and 18 electrons?",
+                        options: ["⁴⁴₂₀Ca²⁺", "⁴⁴₂₀Ca²⁻", "²⁴₂₀Ca²⁺", "⁴⁴₂₄Cr²⁺"],
+                        correct: 0,
+                        whyWrong: [null, "Since protons (20) > electrons (18), the charge is +2, not -2.", "Top-left must be Mass Number A = 20 + 24 = 44.", "20 protons identifies Calcium (Ca), not Chromium."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 7,
+                title: "Average Atomic Mass (2-Isotope Systems)",
+                concept: "Average Atomic Mass = (Mass₁ × Abundance₁) + (Mass₂ × Abundance₂), where fractional abundance = % ÷ 100.",
+                hint: "Convert each percentage into a decimal by dividing by 100 (e.g., 65% → 0.65), multiply by its isotope mass, and sum the results.",
+                examples: [
+                    {
+                        q: "Element M has two natural isotopes: M-63 (mass = 62.93 amu, abundance = 69.15%) and M-65 (mass = 64.93 amu, abundance = 30.85%). What is its average atomic mass rounded to 4 sig figs?",
+                        options: ["63.93 amu", "63.55 amu", "64.31 amu", "62.93 amu"],
+                        correct: 1,
+                        whyWrong: ["63.93 is a simple 50/50 average; M-63 is much more abundant.", null, "64.31 swaps the two percentages.", "You must include the contribution of M-65."]
+                    },
+                    {
+                        q: "Boron consists of B-10 (10.01 amu, 19.90%) and B-11 (11.01 amu, 80.10%). Calculate Boron's average atomic mass to 4 sig figs:",
+                        options: ["10.81 amu", "10.51 amu", "10.21 amu", "11.00 amu"],
+                        correct: 0,
+                        whyWrong: [null, "10.51 assumes a 50/50 split.", "10.21 swaps the abundances.", "Include the 19.90% of B-10."]
+                    },
+                    {
+                        q: "Chlorine has two main isotopes: Cl-35 (34.97 amu, 75.78%) and Cl-37 (36.97 amu, 24.22%). Calculate the average atomic mass (4 sig figs):",
+                        options: ["35.97 amu", "35.45 amu", "36.49 amu", "35.00 amu"],
+                        correct: 1,
+                        whyWrong: ["35.97 is an unweighted average.", null, "36.49 swaps the percentages.", "Calculate (34.97 × 0.7578) + (36.97 × 0.2422)."]
+                    },
+                    {
+                        q: "Silver has isotopes Ag-107 (106.9 amu, 51.84%) and Ag-109 (108.9 amu, 48.16%). What is its average atomic mass to 4 sig figs?",
+                        options: ["107.9 amu", "108.0 amu", "107.4 amu", "108.5 amu"],
+                        correct: 0,
+                        whyWrong: [null, "Check rounding to 4 significant figures: 107.863 → 107.9.", "Check your multiplication.", "Since Ag-107 is >50%, the average must be closer to 106.9 than 108.9."]
+                    },
+                    {
+                        q: "Hypothetical element Z has Z-40 (39.96 amu, 80.00%) and Z-44 (43.96 amu, 20.00%). What is its average atomic mass to 4 sig figs?",
+                        options: ["41.96 amu", "40.76 amu", "43.16 amu", "40.00 amu"],
+                        correct: 1,
+                        whyWrong: ["41.96 is a 50/50 average.", null, "43.16 swaps the abundances.", "Calculate (39.96 × 0.80) + (43.96 × 0.20)."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 8,
+                title: "Average Atomic Mass (3-Isotope Systems)",
+                concept: "Average Atomic Mass = Σ (Massᵢ × Fractional Abundanceᵢ) across all three isotopes. Verify that the three percentages sum to 100%.",
+                hint: "Multiply each isotope's mass by (percentage / 100), add all three products together, and round to 4 significant figures.",
+                examples: [
+                    {
+                        q: "Magnesium has three isotopes: Mg-24 (23.99 amu, 78.99%), Mg-25 (24.99 amu, 10.00%), and Mg-26 (25.98 amu, 11.01%). Calculate its average atomic mass to 4 sig figs:",
+                        options: ["24.99 amu", "24.31 amu", "24.65 amu", "25.40 amu"],
+                        correct: 1,
+                        whyWrong: ["24.99 ignores the heavy weighting of Mg-24 (78.99%).", null, "Check your weighted sum: (23.99×0.7899) + (24.99×0.1000) + (25.98×0.1101).", "The average must be very close to 23.99 because it makes up nearly 79%."]
+                    },
+                    {
+                        q: "Silicon consists of Si-28 (27.98 amu, 92.23%), Si-29 (28.98 amu, 4.68%), and Si-30 (29.97 amu, 3.09%). Find the average atomic mass (4 sig figs):",
+                        options: ["28.09 amu", "28.98 amu", "28.50 amu", "29.12 amu"],
+                        correct: 0,
+                        whyWrong: [null, "28.98 is an unweighted average.", "Calculate each term carefully before adding.", "Si-28 is over 92%, so the average must be just above 28.0."]
+                    },
+                    {
+                        q: "Neon has three isotopes: Ne-20 (19.99 amu, 90.48%), Ne-21 (20.99 amu, 0.27%), and Ne-22 (21.99 amu, 9.25%). What is Neon's average atomic mass (4 sig figs)?",
+                        options: ["20.99 amu", "20.18 amu", "20.54 amu", "21.05 amu"],
+                        correct: 1,
+                        whyWrong: ["20.99 is the simple mean of the three masses.", null, "Remember 0.27% = 0.0027 (not 0.27!).", "Check decimal placement for percentages."]
+                    },
+                    {
+                        q: "Element Q has three isotopes: Q-50 (49.95 amu, 15.00%), Q-52 (51.94 amu, 65.00%), and Q-54 (53.94 amu, 20.00%). Calculate the average atomic mass (4 sig figs):",
+                        options: ["51.94 amu", "52.04 amu", "51.50 amu", "52.64 amu"],
+                        correct: 1,
+                        whyWrong: ["51.94 is only the mass of Q-52.", null, "20% of Q-54 pulls the average slightly above 51.94.", "Check: (49.95×0.15) + (51.94×0.65) + (53.94×0.20)."]
+                    },
+                    {
+                        q: "Element R has isotopes R-80 (79.92 amu, 25.00%), R-82 (81.91 amu, 50.00%), and R-84 (83.91 amu, 25.00%). What is R's average atomic mass (4 sig figs)?",
+                        options: ["81.91 amu", "82.41 amu", "81.41 amu", "82.00 amu"],
+                        correct: 0,
+                        whyWrong: [null, "Notice the symmetry: 25% below and 25% above R-82.", "Check the symmetric weighting.", "Round (79.92×0.25) + (81.91×0.50) + (83.91×0.25) to 4 sig figs."]
+                    }
+                ]
+            }
+        ];
+
+        const activeExampleIdx = rulesData.map(() => 0);
+        function getSolvedIds() { return JSON.parse(localStorage.getItem('pp_solved_ids') || '[]'); }
+        function markSolved(exId) {
+            const solved = getSolvedIds();
+            if (!solved.includes(exId)) { solved.push(exId); localStorage.setItem('pp_solved_ids', JSON.stringify(solved)); }
+            updateBadge();
+        }
+        function updateBadge() {
+            const solved = getSolvedIds().filter(id => id.startsWith(MODULE_PREFIX)).length;
+            document.getElementById('modBadge').textContent = `${solved}/40`;
+        }
+
+        function renderRules() {
+            const container = document.getElementById('rulesContainer');
+            const solved = getSolvedIds();
+            container.innerHTML = '';
+
+            rulesData.forEach((rule, rIdx) => {
+                const exIdx = activeExampleIdx[rIdx];
+                const ex = rule.examples[exIdx];
+                const exId = `${MODULE_PREFIX}r${rule.ruleNum}_e${exIdx + 1}`;
+                const isSolved = solved.includes(exId);
+
+                let ruleSolvedCount = 0;
+                for (let i = 1; i <= 5; i++) {
+                    if (solved.includes(`${MODULE_PREFIX}r${rule.ruleNum}_e${i}`)) ruleSolvedCount++;
+                }
+
+                const card = document.createElement('section');
+                card.className = "bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden";
+                card.innerHTML = `
+                    <div class="bg-slate-900 text-white px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Rule ${rule.ruleNum} of 8</span>
+                            <h2 class="text-lg font-extrabold">${rule.title}</h2>
+                        </div>
+                        <span class="text-xs bg-slate-800 px-3 py-1 rounded-full text-slate-300">
+                            Rule Mastery: <strong class="text-emerald-400">${ruleSolvedCount}/5</strong>
+                        </span>
+                    </div>
+
+                    <div class="p-6 space-y-5">
+                        <div class="bg-emerald-50 border-l-4 border-emerald-500 p-3.5 rounded-r-xl text-xs sm:text-sm text-emerald-950">
+                            <strong>Core Principle:</strong> ${rule.concept}
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="text-xs font-bold text-slate-500 uppercase mr-1">Practice Variations:</span>
+                            ${[0, 1, 2, 3, 4].map(i => {
+                                const varDone = solved.includes(`${MODULE_PREFIX}r${rule.ruleNum}_e${i + 1}`);
+                                const isActive = i === exIdx;
+                                return `
+                                    <button onclick="selectVariation(${rIdx}, ${i})"
+                                        class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 border
+                                        ${isActive ? 'bg-indigo-600 text-white border-indigo-600 shadow' : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'}">
+                                        <span>Example ${i + 1}</span>
+                                        ${varDone ? '<i class="fa-solid fa-circle-check text-emerald-400"></i>' : ''}
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div class="flex justify-between items-start gap-2 mb-2">
+                                <span class="text-xs font-extrabold text-indigo-600 uppercase">Exercise ${rule.ruleNum}.${exIdx + 1}</span>
+                                ${isSolved ? '<span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full"><i class="fa-solid fa-check mr-1"></i>Mastered</span>' : ''}
+                            </div>
+                            <p class="text-slate-900 font-semibold text-sm sm:text-base whitespace-pre-line leading-relaxed">${ex.q}</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            ${ex.options.map((opt, oIdx) => {
+                                const letters = ['A', 'B', 'C', 'D'];
+                                return `
+                                    <button onclick="checkAnswer(${rIdx}, ${oIdx})"
+                                        id="btn_${rIdx}_${oIdx}"
+                                        class="text-left p-3.5 rounded-xl border-2 border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/40 transition flex items-start gap-3 text-sm font-medium text-slate-800">
+                                        <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 font-extrabold flex items-center justify-center shrink-0 text-xs">${letters[oIdx]}</span>
+                                        <span class="pt-0.5">${opt}</span>
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div id="feedback_${rIdx}" class="hidden rounded-xl p-4 text-sm"></div>
+
+                        <div class="flex justify-end">
+                            <button onclick="showHint(${rIdx})" class="text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-lightbulb text-amber-500"></i> Need a Socratic Hint?
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function selectVariation(rIdx, exIdx) { activeExampleIdx[rIdx] = exIdx; renderRules(); }
+
+        function showHint(rIdx) {
+            const rule = rulesData[rIdx];
+            const fb = document.getElementById(`feedback_${rIdx}`);
+            fb.className = "rounded-xl p-4 text-sm bg-amber-50 border border-amber-300 text-amber-950 block";
+            fb.innerHTML = `<div class="font-bold flex items-center gap-2 mb-1"><i class="fa-solid fa-compass text-amber-600"></i> Guiding Hint (Rule ${rule.ruleNum}):</div><p>${rule.hint}</p>`;
+        }
+
+        function checkAnswer(rIdx, chosenIdx) {
+            const rule = rulesData[rIdx];
+            const exIdx = activeExampleIdx[rIdx];
+            const ex = rule.examples[exIdx];
+            const fb = document.getElementById(`feedback_${rIdx}`);
+
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`btn_${rIdx}_${i}`).classList.remove('border-rose-500', 'bg-rose-50', 'border-emerald-500', 'bg-emerald-50');
+            }
+
+            const chosenBtn = document.getElementById(`btn_${rIdx}_${chosenIdx}`);
+            if (chosenIdx === ex.correct) {
+                chosenBtn.classList.add('border-emerald-500', 'bg-emerald-50');
+                markSolved(`${MODULE_PREFIX}r${rule.ruleNum}_e${exIdx + 1}`);
+                fb.className = "rounded-xl p-4 text-sm bg-emerald-50 border border-emerald-300 text-emerald-950 block";
+                fb.innerHTML = `<div class="font-extrabold text-emerald-800 flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i><span>Spot on! Example ${exIdx + 1} mastered.</span></div><p class="mt-1 text-xs text-emerald-800">Practice all 5 variations to solidify this rule.</p>`;
+            } else {
+                chosenBtn.classList.add('border-rose-500', 'bg-rose-50');
+                const diagnostic = ex.whyWrong[chosenIdx] || "Check the atomic number and charge/mass carefully.";
+                fb.className = "rounded-xl p-4 text-sm bg-rose-50 border border-rose-300 text-rose-950 block";
+                fb.innerHTML = `<div class="font-extrabold text-rose-800 flex items-center gap-2"><i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i><span>Not quite — check your calculation:</span></div><p class="mt-1 font-medium">${diagnostic}</p><div class="mt-2 pt-2 border-t border-rose-200 text-xs text-rose-900"><strong>Clue:</strong> ${rule.hint}</div>`;
+            }
+        }
+
+        window.onload = () => { updateBadge(); renderRules(); };
+    </script>
+</body>
+</html>

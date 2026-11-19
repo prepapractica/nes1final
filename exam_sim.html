@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepaPráctica | 90-Minute Mock Final Exam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-indigo-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="bg-amber-400 text-indigo-950 p-1.5 rounded-lg font-extrabold"><i class="fa-solid fa-flask-vial"></i></div>
+                <span class="font-extrabold text-lg">Prepa<span class="text-amber-400">Práctica</span></span>
+            </a>
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="index.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">Home</a>
+                <a href="matter.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">1. Matter</a>
+                <a href="atoms.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">2. Atoms</a>
+                <a href="electrons.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">3. Electrons</a>
+                <a href="nomenclature.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">4. Nomenclature</a>
+                <a href="exam_sim.html" class="bg-amber-400 text-indigo-950 px-3 py-2 rounded-lg text-sm font-extrabold">Mock Exam</a>
+            </div>
+            <!-- Live Countdown Timer -->
+            <div id="timerBox" class="bg-indigo-950 border border-amber-400/60 px-3.5 py-1.5 rounded-xl flex items-center gap-2 font-mono font-extrabold text-amber-300 text-sm">
+                <i class="fa-regular fa-clock"></i>
+                <span id="timerDisplay">90:00</span>
+            </div>
+        </div>
+        <div class="md:hidden bg-indigo-950 px-3 py-2 flex overflow-x-auto space-x-2 text-xs">
+            <a href="index.html" class="text-indigo-200 px-3 py-1 rounded-lg">Home</a>
+            <a href="matter.html" class="text-indigo-200 px-3 py-1 rounded-lg">1. Matter</a>
+            <a href="atoms.html" class="text-indigo-200 px-3 py-1 rounded-lg">2. Atoms</a>
+            <a href="electrons.html" class="text-indigo-200 px-3 py-1 rounded-lg">3. Electrons</a>
+            <a href="nomenclature.html" class="text-indigo-200 px-3 py-1 rounded-lg">4. Nomenclature</a>
+            <a href="exam_sim.html" class="bg-amber-400 text-indigo-950 px-3 py-1 rounded-lg font-extrabold">Mock Exam</a>
+        </div>
+    </nav>
+
+    <!-- Intro Screen -->
+    <main id="introScreen" class="max-w-3xl mx-auto px-4 py-12 flex-grow w-full">
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 sm:p-10 text-center space-y-6">
+            <div class="w-16 h-16 rounded-2xl bg-indigo-900 text-amber-400 flex items-center justify-center text-3xl mx-auto shadow-lg">
+                <i class="fa-solid fa-stopwatch-20"></i>
+            </div>
+            <div>
+                <span class="bg-amber-100 text-amber-900 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Final Exam Simulation</span>
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3">Natural & Experimental Science I<br>40-Question Timed Mock Exam</h1>
+                <p class="text-slate-600 text-sm sm:text-base mt-3 max-w-xl mx-auto">
+                    Test your readiness under real exam conditions: <strong>40 randomized questions</strong> (10 from each module) and a <strong>90-minute countdown</strong>.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left bg-slate-50 p-5 rounded-2xl border border-slate-200 text-xs sm:text-sm">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-shuffle text-indigo-600 text-lg mt-0.5"></i>
+                    <div>
+                        <strong class="block text-slate-900">Fresh Random Draw</strong>
+                        <span class="text-slate-600">Every attempt pulls 40 original items distinct from Key A & Key B.</span>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-table text-emerald-600 text-lg mt-0.5"></i>
+                    <div>
+                        <strong class="block text-slate-900">Reference Tables</strong>
+                        <span class="text-slate-600">Aufbau chart, polyatomic ions & prefixes accessible anytime.</span>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-user-shield text-amber-600 text-lg mt-0.5"></i>
+                    <div>
+                        <strong class="block text-slate-900">No-Spoiler Report</strong>
+                        <span class="text-slate-600">Missed items show diagnostic hints & module links, never the answer key.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-2">
+                <button onclick="startExam()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold px-8 py-4 rounded-2xl shadow-lg text-base transition inline-flex items-center gap-3">
+                    <span>Begin 90-Minute Mock Exam</span>
+                    <i class="fa-solid fa-play"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Active Exam Workspace -->
+    <main id="examScreen" class="hidden max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Left / Main Question Card (8 cols) -->
+            <div class="lg:col-span-8 space-y-5">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100 mb-5">
+                        <div class="flex items-center gap-2">
+                            <span id="qNumberBadge" class="bg-indigo-900 text-white text-xs font-extrabold px-3 py-1 rounded-lg">Question 1 of 40</span>
+                            <span id="qModuleTag" class="bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1 rounded-lg">Module 1</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="toggleFlag()" id="flagBtn" class="text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-300 text-slate-600 hover:bg-amber-50 hover:border-amber-400 transition">
+                                <i class="fa-regular fa-flag mr-1"></i>Flag for Review
+                            </button>
+                            <button onclick="openRefModal()" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-200 hover:bg-indigo-100 transition">
+                                <i class="fa-solid fa-table mr-1"></i>Reference Tables
+                            </button>
+                        </div>
+                    </div>
+
+                    <p id="qPrompt" class="text-slate-900 font-semibold text-base sm:text-lg whitespace-pre-line leading-relaxed mb-6"></p>
+
+                    <div id="qOptions" class="space-y-3"></div>
+
+                    <!-- Prev / Next Navigation -->
+                    <div class="mt-8 pt-5 border-t border-slate-100 flex justify-between items-center">
+                        <button onclick="prevQuestion()" id="prevBtn" class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm hover:bg-slate-100 disabled:opacity-40 transition">
+                            <i class="fa-solid fa-arrow-left mr-1.5"></i>Previous
+                        </button>
+                        <span id="answeredCounter" class="text-xs font-bold text-slate-500">0 of 40 Answered</span>
+                        <button onclick="nextQuestion()" id="nextBtn" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm transition">
+                            Next<i class="fa-solid fa-arrow-right ml-1.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Bubble Sheet Navigator (4 cols) -->
+            <div class="lg:col-span-4 space-y-4">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sticky top-20">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-extrabold text-sm text-slate-900 uppercase tracking-wider">Answer Bubble Sheet</h3>
+                        <span class="text-xs text-slate-500">Click # to jump</span>
+                    </div>
+                    <div id="bubbleGrid" class="grid grid-cols-8 sm:grid-cols-10 lg:grid-cols-5 gap-1.5 mb-4"></div>
+                    
+                    <div class="flex flex-wrap gap-3 text-[11px] text-slate-600 border-t pt-3 mb-4">
+                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-indigo-600 inline-block"></span> Answered</span>
+                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-amber-400 inline-block"></span> Flagged</span>
+                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-slate-100 border border-slate-300 inline-block"></span> Unanswered</span>
+                    </div>
+
+                    <button onclick="confirmSubmitPrompt()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3 rounded-xl shadow transition text-sm">
+                        <i class="fa-solid fa-paper-plane mr-2"></i>Submit Exam for Diagnostic
+                    </button>
+
+                    <!-- Inline Confirmation Box (No window.confirm used!) -->
+                    <div id="submitConfirmBox" class="hidden mt-3 p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-xs text-amber-950 space-y-2.5">
+                        <p id="submitConfirmText" class="font-bold"></p>
+                        <div class="flex gap-2">
+                            <button onclick="finishExam()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-lg">Yes, Grade Now</button>
+                            <button onclick="cancelSubmitPrompt()" class="flex-1 bg-white border border-slate-300 text-slate-700 font-bold py-2 rounded-lg">Keep Working</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Diagnostic Results Screen -->
+    <main id="resultsScreen" class="hidden max-w-5xl mx-auto px-4 py-8 space-y-8 flex-grow w-full">
+        <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                    <span class="text-amber-400 text-xs font-extrabold uppercase tracking-wider">Socratic Post-Exam Diagnostic</span>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold mt-1">Mock Exam Performance Breakdown</h1>
+                    <p id="timeTakenText" class="text-slate-300 text-sm mt-1"></p>
+                </div>
+                <div class="bg-slate-800 border border-slate-700 px-6 py-4 rounded-2xl text-center shrink-0">
+                    <div class="text-xs text-slate-400 uppercase font-bold">Final Score</div>
+                    <div id="finalScoreBig" class="text-3xl sm:text-4xl font-extrabold text-amber-400 mt-0.5">0 / 40</div>
+                    <div id="finalPctText" class="text-xs font-bold text-emerald-400 mt-0.5">0% Mastery</div>
+                </div>
+            </div>
+
+            <!-- 4 Section Breakdown Bars -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-6 border-t border-slate-800 text-xs">
+                <div class="bg-slate-800/70 p-4 rounded-xl">
+                    <div class="text-sky-300 font-bold">1. Matter & Measure</div>
+                    <div id="resMod1" class="text-xl font-extrabold mt-1">0 / 10</div>
+                    <a href="matter.html" class="text-amber-300 hover:underline mt-2 inline-block">Practice Module 1 →</a>
+                </div>
+                <div class="bg-slate-800/70 p-4 rounded-xl">
+                    <div class="text-emerald-300 font-bold">2. Atomic Structure</div>
+                    <div id="resMod2" class="text-xl font-extrabold mt-1">0 / 10</div>
+                    <a href="atoms.html" class="text-amber-300 hover:underline mt-2 inline-block">Practice Module 2 →</a>
+                </div>
+                <div class="bg-slate-800/70 p-4 rounded-xl">
+                    <div class="text-purple-300 font-bold">3. Electrons & Trends</div>
+                    <div id="resMod3" class="text-xl font-extrabold mt-1">0 / 10</div>
+                    <a href="electrons.html" class="text-amber-300 hover:underline mt-2 inline-block">Practice Module 3 →</a>
+                </div>
+                <div class="bg-slate-800/70 p-4 rounded-xl">
+                    <div class="text-amber-300 font-bold">4. Nomenclature</div>
+                    <div id="resMod4" class="text-xl font-extrabold mt-1">0 / 10</div>
+                    <a href="nomenclature.html" class="text-amber-300 hover:underline mt-2 inline-block">Practice Module 4 →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Socratic Review List (Shows Missed Questions + Clues WITHOUT Spoiling Answers) -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200 mb-6">
+                <div>
+                    <h2 class="text-xl font-extrabold text-slate-900">Guided Review of Missed & Unanswered Questions</h2>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-0.5">To protect your learning process, the answer key is hidden. Use each Socratic clue and link to re-solve the concept!</p>
+                </div>
+                <button onclick="location.reload()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-4 py-2 rounded-xl text-xs shrink-0">
+                    <i class="fa-solid fa-rotate-right mr-1.5"></i>Generate New 40-Question Exam
+                </button>
+            </div>
+            <div id="diagnosticList" class="space-y-4"></div>
+        </div>
+    </main>
+
+    <!-- Exam Reference Modal -->
+    <div id="refModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto p-6 shadow-2xl">
+            <div class="flex justify-between items-center border-b pb-3 mb-4 sticky top-0 bg-white">
+                <h3 class="text-xl font-extrabold text-slate-900"><i class="fa-solid fa-book-open text-indigo-600 mr-2"></i>Exam Reference Sheets</h3>
+                <button onclick="closeRefModal()" class="text-slate-400 hover:text-slate-700 text-2xl font-bold">&times;</button>
+            </div>
+            <div class="space-y-5 text-xs">
+                <div>
+                    <h4 class="font-bold text-indigo-900 text-sm mb-1.5">Aufbau Filling Order & Noble Gas Cores</h4>
+                    <p class="bg-slate-100 p-2.5 rounded-xl font-mono">1s² → 2s² → 2p⁶ → 3s² → 3p⁶ → 4s² → 3d¹⁰ → 4p⁶ → 5s² → 4d¹⁰ → 5p⁶ → 6s²</p>
+                    <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 mt-2 text-center">
+                        <div class="bg-indigo-50 p-2 rounded border">[He] = 2e⁻ (2s)</div>
+                        <div class="bg-indigo-50 p-2 rounded border">[Ne] = 10e⁻ (3s)</div>
+                        <div class="bg-indigo-50 p-2 rounded border">[Ar] = 18e⁻ (4s)</div>
+                        <div class="bg-indigo-50 p-2 rounded border">[Kr] = 36e⁻ (5s)</div>
+                        <div class="bg-indigo-50 p-2 rounded border">[Xe] = 54e⁻ (6s)</div>
+                        <div class="bg-indigo-50 p-2 rounded border">[Rn] = 86e⁻ (7s)</div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-indigo-900 text-sm mb-1.5">Covalent Prefixes & Polyatomic Ions</h4>
+                    <p class="mb-2"><strong>Prefixes:</strong> 1 mono-, 2 di-, 3 tri-, 4 tetra-, 5 penta-, 6 hexa-, 7 hepta-, 8 octa-, 9 nona-, 10 deca-</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        <div class="p-2 bg-slate-50 rounded border">ammonium: <strong>NH₄⁺</strong></div>
+                        <div class="p-2 bg-slate-50 rounded border">hydroxide: <strong>OH⁻</strong></div>
+                        <div class="p-2 bg-slate-50 rounded border">nitrite / nitrate: <strong>NO₂⁻ / NO₃⁻</strong></div>
+                        <div class="p-2 bg-slate-50 rounded border">sulfite / sulfate: <strong>SO₃²⁻ / SO₄²⁻</strong></div>
+                        <div class="p-2 bg-slate-50 rounded border">phosphite / phosphate: <strong>PO₃³⁻ / PO₄³⁻</strong></div>
+                        <div class="p-2 bg-slate-50 rounded border">carbonate / bicarbonate: <strong>CO₃²⁻ / HCO₃⁻</strong></div>
+                        <div class="p-2 bg-slate-50 rounded border">hypochlorite / chlorite: <strong>ClO⁻ / ClO₂⁻</strong></div>
+                        <div class="p-2 bg-slate-50 rounded border">chlorate / perchlorate: <strong>ClO₃⁻ / ClO₄⁻</strong></div>
+                        <div class="p-2 bg-slate-50 rounded border">chromate / dichromate: <strong>CrO₄²⁻ / Cr₂O₇²⁻</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Question Bank: 15 items per module (60 total), 10 randomly sampled per module = 40-question exam
+        const questionBank = {
+            1: [
+                { rule: "SI Units", link: "matter.html", q: "A reaction vessel is maintained at 410 K. What physical quantity does this SI measurement represent?", opts: ["Heat energy", "Thermodynamic temperature", "Amount of substance", "Pressure"], ans: 1, hint: "Kelvin (K) is the SI base unit for temperature, whereas Joules measure heat energy." },
+                { rule: "SI Units", link: "matter.html", q: "A chemist measures 0.450 mol of sodium chloride for a synthesis. What does 'mol' measure?", opts: ["Mass in grams", "Amount of substance", "Solution volume", "Density"], ans: 1, hint: "The mole (mol) is the SI base unit for amount of substance." },
+                { rule: "Accuracy & Precision", link: "matter.html", q: "True mass = 200.00 g.\nScale A: 199.99 g, 200.01 g, 200.00 g | Scale B: 185.40 g, 185.42 g, 185.39 g.\nEvaluate both scales:", opts: ["Both are accurate and precise", "Scale A is accurate & precise; Scale B is precise only", "Scale B is accurate only", "Neither scale is precise"], ans: 1, hint: "Check how tightly grouped Scale B's numbers are (precision) vs. how close they are to 200.00 g (accuracy)." },
+                { rule: "Accuracy & Precision", link: "matter.html", q: "True boiling point = 100.0 °C.\nSensor 1: 92.5 °C, 108.1 °C, 99.4 °C | Sensor 2: 100.0 °C, 100.1 °C, 99.9 °C.\nWhich statement is best?", opts: ["Sensor 1 is neither accurate nor precise; Sensor 2 is both accurate and precise", "Both sensors are precise", "Sensor 1 is precise only", "Neither sensor is accurate"], ans: 0, hint: "Sensor 1 swings by over 15 °C (low precision and unreliable individual readings)." },
+                { rule: "Classification of Matter", link: "matter.html", q: "Pure glucose (C₆H₁₂O₆) always contains carbon, hydrogen, and oxygen chemically bonded in a 6:12:6 ratio. Glucose is a:", opts: ["Element", "Compound", "Homogeneous mixture", "Heterogeneous mixture"], ans: 1, hint: "Two or more different elements chemically bonded in a fixed ratio form a compound." },
+                { rule: "Classification of Matter", link: "matter.html", q: "Brass is made by physically blending copper and zinc in varying ratios to create a uniform single-phase solid. Brass is classified as a:", opts: ["Compound", "Element", "Homogeneous mixture", "Heterogeneous mixture"], ans: 2, hint: "Alloys have variable composition (physically mixed) and look completely uniform throughout." },
+                { rule: "Classification of Matter", link: "matter.html", q: "Sand stirred into a beaker of water settles to the bottom, showing two distinct visible phases. This is a:", opts: ["Homogeneous mixture", "Heterogeneous mixture", "Compound", "Element"], ans: 1, hint: "Visible boundaries or layers between components indicate a heterogeneous mixture." },
+                { rule: "Separation Techniques", link: "matter.html", q: "Which separation method separates a mixture of miscible liquids (like methanol at 65 °C and water at 100 °C) based on boiling points?", opts: ["Filtration", "Distillation", "Decantation", "Magnetism"], ans: 1, hint: "Heating liquids to vaporize and condense the lower-boiling component first is distillation." },
+                { rule: "Separation Techniques", link: "matter.html", q: "Pouring off a top layer of oil from a denser bottom layer of water in a separatory funnel is known as:", opts: ["Chromatography", "Filtration", "Decantation", "Sublimation"], ans: 2, hint: "Separating immiscible liquids of different densities without boiling or filtering is decantation." },
+                { rule: "Intensive vs. Extensive", link: "matter.html", q: "The boiling point of pure ethanol is 78.4 °C regardless of whether you heat 10 mL or 10 L. Boiling point is an:", opts: ["Extensive property", "Intensive property", "Chemical property", "Extrinsic variable"], ans: 1, hint: "Properties that do NOT depend on sample amount are intensive." },
+                { rule: "Intensive vs. Extensive", link: "matter.html", q: "A 500 g block of aluminum occupies twice the volume of a 250 g block. Mass and volume are:", opts: ["Intensive properties", "Extensive properties", "Chemical properties", "Nuclear properties"], ans: 1, hint: "Properties that scale directly with the quantity of matter are extensive." },
+                { rule: "Physical vs. Chemical", link: "matter.html", q: "Silver tarnishes when it reacts with sulfur compounds in air to form black silver sulfide (Ag₂S). Tarnishing is a:", opts: ["Physical change", "Chemical change", "Phase change", "Physical property"], ans: 1, hint: "A brand-new chemical compound (Ag₂S) is produced." },
+                { rule: "Phase Transitions", link: "matter.html", q: "Water vapor in cold clouds turns directly into solid snow crystals without becoming liquid water first. This process is:", opts: ["Sublimation", "Deposition", "Condensation", "Solidification"], ans: 1, hint: "Gas → Solid directly is deposition (the reverse of sublimation)." },
+                { rule: "Conservation of Mass", link: "matter.html", q: "In the reaction: 2Mg + O₂ → 2MgO, 48 g of Mg reacts completely with 32 g of O₂. What mass of MgO is formed?", opts: ["16 g", "80 g", "64 g", "96 g"], ans: 1, hint: "By Lavoisier's Law, Mass(Reactants) = Mass(Products). Add 48 g + 32 g." },
+                { rule: "Conservation of Mass", link: "matter.html", q: "When 100 g of CaCO₃ decomposes (CaCO₃ → CaO + CO₂) to yield 56 g of CaO, how much CO₂ is produced?", opts: ["156 g", "44 g", "56 g", "50 g"], ans: 1, hint: "Subtract the solid product mass (56 g) from the starting reactant mass (100 g)." }
+            ],
+            2: [
+                { rule: "Atomic Models", link: "atoms.html", q: "Which scientist discovered the dense, positively charged atomic nucleus using the alpha-particle gold foil experiment?", opts: ["J.J. Thomson", "Ernest Rutherford", "John Dalton", "Niels Bohr"], ans: 1, hint: "Alpha particles bouncing off a tiny dense center was Rutherford's 1911 discovery." },
+                { rule: "Atomic Models", link: "atoms.html", q: "The 'plum-pudding' model—proposing negatively charged electrons embedded inside a positive sphere—was developed by:", opts: ["J.J. Thomson", "John Dalton", "Ernest Rutherford", "James Chadwick"], ans: 0, hint: "Thomson discovered the electron via cathode rays and proposed the plum-pudding model." },
+                { rule: "Electrons in Ions", link: "atoms.html", q: "How many electrons are contained in a sulfide ion, S²⁻? (Atomic number of Sulfur = 16)", opts: ["14", "16", "18", "32"], ans: 2, hint: "A 2⁻ anion has gained 2 extra electrons beyond its neutral count of 16." },
+                { rule: "Electrons in Ions", link: "atoms.html", q: "How many electrons are present in an aluminum cation, Al³⁺? (Atomic number of Al = 13)", opts: ["10", "13", "16", "27"], ans: 0, hint: "A 3⁺ charge means the neutral atom (13 e⁻) lost 3 electrons." },
+                { rule: "Electrons in Ions", link: "atoms.html", q: "Determine the number of electrons in a nitride ion, N³⁻. (Atomic number of N = 7)", opts: ["4", "7", "10", "14"], ans: 2, hint: "Add 3 gained electrons to Nitrogen's atomic number (7)." },
+                { rule: "Neutrons in Isotopes", link: "atoms.html", q: "How many neutrons are in an atom of Carbon-14? (Atomic number of C = 6)", opts: ["6", "7", "8", "14"], ans: 2, hint: "Neutrons = Mass Number (14) − Atomic Number (6)." },
+                { rule: "Neutrons in Isotopes", link: "atoms.html", q: "Calculate the number of neutrons in an isotope of Cobalt-60. (Atomic number of Co = 27)", opts: ["27", "32", "33", "60"], ans: 2, hint: "Subtract Cobalt's proton count (27) from its mass number (60)." },
+                { rule: "Neutrons in Isotopes", link: "atoms.html", q: "How many neutrons exist in Uranium-238? (Atomic number of U = 92)", opts: ["92", "146", "238", "330"], ans: 1, hint: "Subtract Z = 92 from A = 238." },
+                { rule: "Mass Number", link: "atoms.html", q: "What is the mass number of a Zinc atom (Z = 30) that contains 38 neutrons?", opts: ["30", "38", "65", "68"], ans: 3, hint: "Mass Number (A) = Protons (30) + Neutrons (38)." },
+                { rule: "Mass Number", link: "atoms.html", q: "An atom of Silver (Z = 47) contains 62 neutrons. What is its mass number?", opts: ["107", "108", "109", "15"], ans: 2, hint: "Sum the protons (47) and neutrons (62)." },
+                { rule: "Nuclide Notation", link: "atoms.html", q: "How many protons, neutrons, and electrons are in ⁵⁶₂₆Fe²⁺?", opts: ["26 p⁺, 30 n⁰, 24 e⁻", "26 p⁺, 56 n⁰, 26 e⁻", "30 p⁺, 26 n⁰, 24 e⁻", "26 p⁺, 30 n⁰, 28 e⁻"], ans: 0, hint: "Bottom = protons (26); Top − Bottom = neutrons (30); 2⁺ means 26 − 2 = 24 electrons." },
+                { rule: "Average Atomic Mass", link: "atoms.html", q: "Boron has B-10 (10.01 amu, 19.90%) and B-11 (11.01 amu, 80.10%). Calculate its average atomic mass (4 sig figs):", opts: ["10.81 amu", "10.51 amu", "10.21 amu", "11.00 amu"], ans: 0, hint: "Compute (10.01 × 0.1990) + (11.01 × 0.8010)." },
+                { rule: "Average Atomic Mass", link: "atoms.html", q: "Chlorine has Cl-35 (34.97 amu, 75.78%) and Cl-37 (36.97 amu, 24.22%). Find its average atomic mass (4 sig figs):", opts: ["35.97 amu", "35.45 amu", "36.49 amu", "35.00 amu"], ans: 1, hint: "Compute (34.97 × 0.7578) + (36.97 × 0.2422)." },
+                { rule: "Average Atomic Mass", link: "atoms.html", q: "Element Q has Q-50 (49.95 amu, 15.00%), Q-52 (51.94 amu, 65.00%), and Q-54 (53.94 amu, 20.00%). Find its average atomic mass (4 sig figs):", opts: ["51.94 amu", "52.04 amu", "51.50 amu", "52.64 amu"], ans: 1, hint: "Multiply each mass by its fractional abundance (0.15, 0.65, 0.20) and add." },
+                { rule: "Average Atomic Mass", link: "atoms.html", q: "Magnesium has Mg-24 (23.99 amu, 78.99%), Mg-25 (24.99 amu, 10.00%), and Mg-26 (25.98 amu, 11.01%). Find its average atomic mass (4 sig figs):", opts: ["24.99 amu", "24.31 amu", "24.65 amu", "25.40 amu"], ans: 1, hint: "Weight each isotope mass by 0.7899, 0.1000, and 0.1101 respectively." }
+            ],
+            3: [
+                { rule: "Full Electron Config", link: "electrons.html", q: "Which full electron configuration represents Arsenic (As, Z = 33)?", opts: ["1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p³", "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁴", "1s² 2s² 2p⁶ 3s² 3p⁶ 3d¹⁰ 4s² 4p⁵", "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 4d¹⁰ 4p³"], ans: 0, hint: "Sum the exponents to equal 33, making sure 4s² fills before 3d¹⁰." },
+                { rule: "Full Electron Config", link: "electrons.html", q: "Select the ground-state electron configuration for Titanium (Ti, Z = 22):", opts: ["1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d²", "1s² 2s² 2p⁶ 3s² 3p⁶ 3d⁴", "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 4p²", "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁴"], ans: 0, hint: "After 3p⁶ (18 electrons), 4s² fills next (20), followed by 3d² (22)." },
+                { rule: "Noble Gas Notation", link: "electrons.html", q: "Choose the correct noble gas notation for Sulfur (S, Z = 16):", opts: ["[Ne] 3s² 3p⁴", "[Ne] 2s² 2p⁴", "[Ar] 3s² 3p⁴", "[Ne] 3s² 3d⁴"], ans: 0, hint: "[Ne] replaces 10 electrons (up to 2p⁶), so continue at 3s² 3p⁴." },
+                { rule: "Noble Gas Notation", link: "electrons.html", q: "What is the noble gas shorthand configuration for Zinc (Zn, Z = 30)?", opts: ["[Ar] 4s² 3d⁸", "[Ar] 4s² 3d¹⁰", "[Kr] 4s² 3d¹⁰", "[Ne] 3s² 3p⁶ 3d¹⁰"], ans: 1, hint: "[Ar] = 18 electrons. Add 4s² (20) + 3d¹⁰ (30)." },
+                { rule: "Element from Config", link: "electrons.html", q: "Identify the neutral element with configuration: 1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s²", opts: ["Rubidium (Z=37)", "Strontium (Z=38)", "Yttrium (Z=39)", "Barium (Z=56)"], ans: 1, hint: "Sum all superscripts: 2+2+6+2+6+2+10+6+2 = 38." },
+                { rule: "Element from Config", link: "electrons.html", q: "Which neutral element has the configuration: 1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁶?", opts: ["Chromium (Z=24)", "Manganese (Z=25)", "Iron (Z=26)", "Cobalt (Z=27)"], ans: 2, hint: "18 electrons through 3p⁶ + 2 (4s²) + 6 (3d⁶) = 26." },
+                { rule: "Element from Noble Gas", link: "electrons.html", q: "Which neutral element has the noble gas notation: [Ar] 4s² 3d⁷?", opts: ["Iron (Z=26)", "Cobalt (Z=27)", "Nickel (Z=28)", "Rhodium (Z=45)"], ans: 1, hint: "[Ar] is 18; 18 + 2 + 7 = 27." },
+                { rule: "Element from Noble Gas", link: "electrons.html", q: "Identify the element represented by: [Kr] 5s² 4d¹⁰ 5p⁵", opts: ["Bromine (Z=35)", "Tellurium (Z=52)", "Iodine (Z=53)", "Xenon (Z=54)"], ans: 2, hint: "[Kr] is 36; 36 + 2 + 10 + 5 = 53." },
+                { rule: "Pauli Exclusion", link: "electrons.html", q: "Which orbital diagram for Carbon (6e⁻) violates the Pauli Exclusion Principle?\n1s | 2s | 2p", opts: ["[↑↓] | [↑↓] | [↑ ][↑ ][  ]", "[↑↑] | [↑↓] | [↑ ][↑ ][  ]", "[↑↓] | [↑↓] | [↑↓][  ][  ]", "[↑↓] | [↑ ][↑↓] | [↑ ][  ][  ]"], ans: 1, hint: "Pauli's principle forbids two arrows pointing in the same direction (↑↑) inside one box." },
+                { rule: "Pauli Exclusion", link: "electrons.html", q: "Which orbital representation for Oxygen (8e⁻) breaks the Pauli Exclusion Principle?", opts: ["1s:[↑↓] 2s:[↑↓] 2p:[↑↓][↑ ][↑ ]", "1s:[↑↓] 2s:[↓↓] 2p:[↑↓][↑ ][↑ ]", "1s:[↑↓] 2s:[↑↓] 2p:[↑↓][↑↓][  ]", "1s:[↑↓] 2s:[↑ ] 2p:[↑↓][↑↓][↑ ]"], ans: 1, hint: "Check the 2s box: two down-spins (↓↓) in the same orbital violates Pauli." },
+                { rule: "Hund's Rule", link: "electrons.html", q: "Nitrogen (7e⁻) is drawn as: 1s:[↑↓] 2s:[↑↓] 2p:[↑↓][↑ ][  ]. Which rule is violated?", opts: ["Pauli Exclusion Principle", "Hund's Rule", "Aufbau Principle", "Octet Rule"], ans: 1, hint: "Hund's Rule requires placing one electron in each of the three 2p boxes before pairing." },
+                { rule: "Electronegativity", link: "electrons.html", q: "Which set of elements is arranged in INCREASING order of electronegativity (lowest to highest)?", opts: ["K, Ca, Ga, Br", "Br, Ga, Ca, K", "F, O, N, C", "Cl, Br, I, At"], ans: 0, hint: "Electronegativity increases moving left-to-right across Period 4 (from K toward Br)." },
+                { rule: "Electronegativity", link: "electrons.html", q: "Select the set ordered by DECREASING electronegativity (highest to lowest):", opts: ["Li, Na, K, Rb", "O, S, Se, Te", "B, C, N, O", "Cs, Ba, Hf, W"], ans: 1, hint: "Moving down Group 16 from Oxygen to Tellurium decreases electronegativity." },
+                { rule: "Atomic Radius", link: "electrons.html", q: "Which set of elements is arranged in INCREASING order of atomic radius (smallest to largest)?", opts: ["Be, Mg, Ca, Sr", "Sr, Ca, Mg, Be", "Na, Mg, Al, Si", "K, Ca, Ga, Br"], ans: 0, hint: "Moving down Group 2 adds energy shells, increasing atomic radius." },
+                { rule: "Atomic Radius", link: "electrons.html", q: "Select the set ordered by DECREASING atomic radius (largest to smallest):", opts: ["F, Cl, Br, I", "Na, Mg, Al, Si", "Si, Al, Mg, Na", "Ne, Ar, Kr, Xe"], ans: 1, hint: "Moving left-to-right across Period 3 pulls the 3rd shell closer, decreasing atomic radius." }
+            ],
+            4: [
+                { rule: "Compound Types", link: "nomenclature.html", q: "What type of compound is H₃PO₄?", opts: ["Binary covalent compound", "Binary ionic compound", "Polyatomic ionic compound", "Oxyacid"], ans: 3, hint: "Compounds starting with H combined with a polyatomic oxyanion (PO₄³⁻) are oxyacids." },
+                { rule: "Compound Types", link: "nomenclature.html", q: "How is K₂SO₄ classified?", opts: ["Binary covalent compound", "Binary ionic compound", "Polyatomic ionic compound", "Oxyacid"], ans: 2, hint: "A metal cation (K⁺) combined with a polyatomic anion (SO₄²⁻) is a polyatomic ionic compound." },
+                { rule: "Binary Covalent", link: "nomenclature.html", q: "Choose the correct name for N₂O₄:", opts: ["Nitrogen tetroxide", "Dinitrogen tetroxide", "Dinitride tetroxide", "Nitrogen (IV) oxide"], ans: 1, hint: "Two nonmetals use Greek prefixes (di- = 2, tetra- = 4) and end in '-ide'." },
+                { rule: "Binary Covalent", link: "nomenclature.html", q: "What is the systematic name of CCl₄?", opts: ["Monocarbon tetrachloride", "Carbon tetrachloride", "Carbon chloride", "Carbon (IV) chloride"], ans: 1, hint: "Never put 'mono-' on the first element; use 'tetra-' for the 4 chlorines." },
+                { rule: "Binary Covalent", link: "nomenclature.html", q: "Choose the formula for Tetraphosphorus decoxide:", opts: ["P₄O₁₀", "P₁₀O₄", "P₂O₅", "PO₄"], ans: 0, hint: "Translate the prefixes directly: tetra- = 4 (P), deca- = 10 (O)." },
+                { rule: "Type I Ionic", link: "nomenclature.html", q: "Choose the formula for Barium nitride:", opts: ["BaN", "Ba₂N₃", "Ba₃N₂", "Ba(NO₃)₂"], ans: 2, hint: "Ba is +2 and N is -3; crisscross the charges to get Ba₃N₂." },
+                { rule: "Type I Ionic", link: "nomenclature.html", q: "What is the correct name for K₂S?", opts: ["Dipotassium monosulfide", "Potassium (I) sulfide", "Potassium sulfide", "Potassium sulfate"], ans: 2, hint: "Potassium is a Type I metal (fixed +1), so no Roman numerals or Greek prefixes are used." },
+                { rule: "Type II Ionic", link: "nomenclature.html", q: "Choose the correct name for PbO₂:", opts: ["Lead (II) oxide", "Lead (IV) oxide", "Lead dioxide", "Dilead monoxide"], ans: 1, hint: "Two O²⁻ ions give -4 total charge, so Lead must be +4 → Lead (IV) oxide." },
+                { rule: "Type II Ionic", link: "nomenclature.html", q: "What is the chemical formula for Chromium(III) sulfide?", opts: ["Cr₃S₂", "Cr₂S₃", "CrS₃", "Cr₃(SO₄)₂"], ans: 1, hint: "Cr is +3 and S is -2; crisscrossing gives Cr₂S₃." },
+                { rule: "Type II Ionic", link: "nomenclature.html", q: "Choose the correct name for Cu₃N:", opts: ["Copper (I) nitride", "Copper (III) nitride", "Tricopper mononitride", "Copper (II) nitride"], ans: 0, hint: "Nitride is N³⁻ (-3). Three copper ions balance -3, so each copper is +1." },
+                { rule: "Polyatomic Ionic", link: "nomenclature.html", q: "Choose the formula for Iron(II) phosphate:", opts: ["FePO₄", "Fe₂(PO₄)₃", "Fe₃(PO₄)₂", "Fe₃P₂"], ans: 2, hint: "Fe²⁺ (+2) and PO₄³⁻ (-3) crisscross to Fe₃(PO₄)₂." },
+                { rule: "Polyatomic Ionic", link: "nomenclature.html", q: "Choose the formula for Ammonium sulfate:", opts: ["NH₄SO₄", "(NH₄)₂SO₄", "NH₄(SO₄)₂", "(NH₄)₂SO₃"], ans: 1, hint: "NH₄⁺ (+1) and SO₄²⁻ (-2) require two ammonium groups in parentheses." },
+                { rule: "Binary Acids", link: "nomenclature.html", q: "Choose the correct name for aqueous HI:", opts: ["Iodic acid", "Iodous acid", "Hydroiodic acid", "Hydrogen iodide acid"], ans: 2, hint: "No oxygen is present, so use 'hydro-' + root + '-ic acid'." },
+                { rule: "Oxyacids", link: "nomenclature.html", q: "Choose the correct name for HClO₃ (containing chlorate, ClO₃⁻):", opts: ["Hydrochloric acid", "Chloric acid", "Chlorous acid", "Perchloric acid"], ans: 1, hint: "Never use 'hydro-' for oxyacids; '-ate' polyatomic ions change to '-ic acid'." },
+                { rule: "Oxyacids", link: "nomenclature.html", q: "What is the formula for phosphoric acid (from phosphate, PO₄³⁻)?", opts: ["HPO₄", "H₂PO₄", "H₃PO₄", "H₃PO₃"], ans: 2, hint: "Phosphate has a -3 charge, so three H⁺ ions are needed to balance it." }
+            ]
+        };
+
+        let examQuestions = [];
+        let userAnswers = [];
+        let flagged = [];
+        let currentIdx = 0;
+        let secondsLeft = 90 * 60;
+        let timerInterval = null;
+
+        function shuffle(arr) {
+            const copy = [...arr];
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+        }
+
+        function startExam() {
+            examQuestions = [];
+            [1, 2, 3, 4].forEach(mod => {
+                const picked = shuffle(questionBank[mod]).slice(0, 10).map(item => ({ ...item, module: mod }));
+                examQuestions.push(...picked);
+            });
+            examQuestions = shuffle(examQuestions);
+            userAnswers = new Array(40).fill(null);
+            flagged = new Array(40).fill(false);
+            currentIdx = 0;
+            secondsLeft = 90 * 60;
+
+            document.getElementById('introScreen').classList.add('hidden');
+            document.getElementById('examScreen').classList.remove('hidden');
+
+            renderBubbleGrid();
+            renderQuestion();
+            startTimer();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                secondsLeft--;
+                if (secondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    finishExam();
+                    return;
+                }
+                const mins = Math.floor(secondsLeft / 60);
+                const secs = secondsLeft % 60;
+                const display = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+                document.getElementById('timerDisplay').textContent = display;
+
+                if (secondsLeft < 300) {
+                    document.getElementById('timerBox').classList.add('bg-rose-950', 'border-rose-500', 'text-rose-300');
+                }
+            }, 1000);
+        }
+
+        function renderQuestion() {
+            const qObj = examQuestions[currentIdx];
+            const modNames = {
+                1: "Module 1: Matter & Measurement",
+                2: "Module 2: Atomic Structure",
+                3: "Module 3: Electrons & Trends",
+                4: "Module 4: Nomenclature"
+            };
+
+            document.getElementById('qNumberBadge').textContent = `Question ${currentIdx + 1} of 40`;
+            document.getElementById('qModuleTag').textContent = modNames[qObj.module];
+            document.getElementById('qPrompt').textContent = qObj.q;
+
+            // Flag button state
+            const fBtn = document.getElementById('flagBtn');
+            if (flagged[currentIdx]) {
+                fBtn.className = "text-xs font-bold px-3 py-1.5 rounded-lg bg-amber-400 text-indigo-950 border border-amber-500 transition";
+                fBtn.innerHTML = `<i class="fa-solid fa-flag mr-1"></i>Flagged`;
+            } else {
+                fBtn.className = "text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-300 text-slate-600 hover:bg-amber-50 hover:border-amber-400 transition";
+                fBtn.innerHTML = `<i class="fa-regular fa-flag mr-1"></i>Flag for Review`;
+            }
+
+            // Options
+            const optContainer = document.getElementById('qOptions');
+            const letters = ['A', 'B', 'C', 'D'];
+            optContainer.innerHTML = qObj.opts.map((opt, idx) => {
+                const isSelected = userAnswers[currentIdx] === idx;
+                return `
+                    <button onclick="selectOption(${idx})"
+                        class="w-full text-left p-4 rounded-xl border-2 transition flex items-start gap-3.5 text-sm sm:text-base font-medium
+                        ${isSelected ? 'border-indigo-600 bg-indigo-50 text-indigo-950 shadow-sm' : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50 text-slate-800'}">
+                        <span class="w-7 h-7 rounded-lg font-extrabold flex items-center justify-center shrink-0 text-xs
+                            ${isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-700'}">
+                            ${letters[idx]}
+                        </span>
+                        <span class="pt-0.5">${opt}</span>
+                    </button>
+                `;
+            }).join('');
+
+            document.getElementById('prevBtn').disabled = currentIdx === 0;
+            document.getElementById('nextBtn').textContent = currentIdx === 39 ? 'Review Last' : 'Next';
+            const answeredCount = userAnswers.filter(a => a !== null).length;
+            document.getElementById('answeredCounter').textContent = `${answeredCount} of 40 Answered`;
+
+            renderBubbleGrid();
+        }
+
+        function selectOption(optIdx) {
+            userAnswers[currentIdx] = optIdx;
+            renderQuestion();
+        }
+
+        function toggleFlag() {
+            flagged[currentIdx] = !flagged[currentIdx];
+            renderQuestion();
+        }
+
+        function prevQuestion() {
+            if (currentIdx > 0) { currentIdx--; renderQuestion(); }
+        }
+
+        function nextQuestion() {
+            if (currentIdx < 39) { currentIdx++; renderQuestion(); }
+        }
+
+        function jumpTo(idx) {
+            currentIdx = idx;
+            renderQuestion();
+        }
+
+        function renderBubbleGrid() {
+            const grid = document.getElementById('bubbleGrid');
+            grid.innerHTML = examQuestions.map((_, idx) => {
+                const isCurrent = idx === currentIdx;
+                const isAnswered = userAnswers[idx] !== null;
+                const isFlagged = flagged[idx];
+
+                let classes = "h-8 rounded-lg text-xs font-extrabold transition flex items-center justify-center border ";
+                if (isFlagged) {
+                    classes += "bg-amber-400 text-indigo-950 border-amber-500 ";
+                } else if (isAnswered) {
+                    classes += "bg-indigo-600 text-white border-indigo-600 ";
+                } else {
+                    classes += "bg-slate-100 text-slate-600 border-slate-300 hover:bg-slate-200 ";
+                }
+                if (isCurrent) classes += "ring-2 ring-offset-1 ring-slate-900 ";
+
+                return `<button onclick="jumpTo(${idx})" class="${classes}">${idx + 1}</button>`;
+            }).join('');
+        }
+
+        function confirmSubmitPrompt() {
+            const unanswered = userAnswers.filter(a => a === null).length;
+            const box = document.getElementById('submitConfirmBox');
+            const txt = document.getElementById('submitConfirmText');
+            txt.textContent = unanswered > 0
+                ? `You still have ${unanswered} unanswered question(s). Ready to submit and view your diagnostic clues?`
+                : `All 40 questions answered! Submit your mock exam now?`;
+            box.classList.remove('hidden');
+        }
+
+        function cancelSubmitPrompt() {
+            document.getElementById('submitConfirmBox').classList.add('hidden');
+        }
+
+        function finishExam() {
+            clearInterval(timerInterval);
+            document.getElementById('examScreen').classList.add('hidden');
+            document.getElementById('resultsScreen').classList.remove('hidden');
+
+            const elapsedSecs = (90 * 60) - Math.max(0, secondsLeft);
+            const minsUsed = Math.floor(elapsedSecs / 60);
+            const secsUsed = elapsedSecs % 60;
+            document.getElementById('timeTakenText').textContent = `Completed in ${minsUsed}m ${secsUsed}s • 40 Randomized Final Exam Items`;
+
+            let totalCorrect = 0;
+            const modScores = { 1: 0, 2: 0, 3: 0, 4: 0 };
+            const missedItems = [];
+            const letters = ['A', 'B', 'C', 'D'];
+
+            examQuestions.forEach((qObj, idx) => {
+                const chosen = userAnswers[idx];
+                if (chosen === qObj.ans) {
+                    totalCorrect++;
+                    modScores[qObj.module]++;
+                } else {
+                    missedItems.push({
+                        num: idx + 1,
+                        qObj,
+                        chosenText: chosen !== null ? `${letters[chosen]}) ${qObj.opts[chosen]}` : "Unanswered"
+                    });
+                }
+            });
+
+            const pct = Math.round((totalCorrect / 40) * 100);
+            document.getElementById('finalScoreBig').textContent = `${totalCorrect} / 40`;
+            document.getElementById('finalPctText').textContent = `${pct}% Score`;
+            document.getElementById('resMod1').textContent = `${modScores[1]} / 10`;
+            document.getElementById('resMod2').textContent = `${modScores[2]} / 10`;
+            document.getElementById('resMod3').textContent = `${modScores[3]} / 10`;
+            document.getElementById('resMod4').textContent = `${modScores[4]} / 10`;
+
+            const list = document.getElementById('diagnosticList');
+            if (missedItems.length === 0) {
+                list.innerHTML = `
+                    <div class="bg-emerald-50 border border-emerald-300 rounded-2xl p-6 text-center text-emerald-950">
+                        <i class="fa-solid fa-award text-4xl text-emerald-600 mb-2"></i>
+                        <h3 class="text-lg font-extrabold">Flawless 40 / 40 Mastery!</h3>
+                        <p class="text-sm mt-1">You answered every single randomized question accurately under timed conditions. You are ready for the final exam!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.innerHTML = missedItems.map(item => `
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <span class="text-xs font-extrabold bg-rose-100 text-rose-800 px-2.5 py-1 rounded-lg">
+                            Question #${item.num} • Module ${item.qObj.module}: ${item.qObj.rule}
+                        </span>
+                        <a href="${item.qObj.link}" class="text-xs font-bold text-indigo-600 hover:underline">
+                            Practice This Rule in Module ${item.qObj.module} →
+                        </a>
+                    </div>
+                    <p class="text-sm font-semibold text-slate-900 whitespace-pre-line">${item.qObj.q}</p>
+                    <p class="text-xs text-rose-700 font-medium"><strong>Your Selection:</strong> ${item.chosenText}</p>
+                    <div class="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-xl text-xs text-amber-950">
+                        <strong><i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i>Socratic Clue (Try solving again):</strong> ${item.qObj.hint}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openRefModal() {
+            const m = document.getElementById('refModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeRefModal() {
+            const m = document.getElementById('refModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+    </script>
+</body>
+</html>

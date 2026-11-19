@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepaPráctica | Module 4: Inorganic Nomenclature</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-indigo-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="bg-amber-400 text-indigo-950 p-1.5 rounded-lg font-extrabold"><i class="fa-solid fa-flask-vial"></i></div>
+                <span class="font-extrabold text-lg">Prepa<span class="text-amber-400">Práctica</span></span>
+            </a>
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="index.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">Home</a>
+                <a href="matter.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">1. Matter & Measure</a>
+                <a href="atoms.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">2. Atomic Structure</a>
+                <a href="electrons.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">3. Electrons & Trends</a>
+                <a href="nomenclature.html" class="bg-indigo-800 text-white px-3 py-2 rounded-lg text-sm font-semibold">4. Nomenclature</a>
+                <a href="exam_sim.html" class="bg-amber-400 hover:bg-amber-300 text-indigo-950 px-3 py-2 rounded-lg text-sm font-extrabold">Mock Exam</a>
+            </div>
+            <div class="text-xs bg-indigo-950 px-3 py-1.5 rounded-lg border border-indigo-700 font-bold text-amber-300">
+                Module 4 Mastery: <span id="modBadge">0/40</span>
+            </div>
+        </div>
+        <div class="md:hidden bg-indigo-950 px-3 py-2 flex overflow-x-auto space-x-2 text-xs">
+            <a href="index.html" class="text-indigo-200 px-3 py-1 rounded-lg">Home</a>
+            <a href="matter.html" class="text-indigo-200 px-3 py-1 rounded-lg">1. Matter</a>
+            <a href="atoms.html" class="text-indigo-200 px-3 py-1 rounded-lg">2. Atoms</a>
+            <a href="electrons.html" class="text-indigo-200 px-3 py-1 rounded-lg">3. Electrons</a>
+            <a href="nomenclature.html" class="bg-indigo-700 text-white px-3 py-1 rounded-lg font-semibold">4. Nomenclature</a>
+            <a href="exam_sim.html" class="bg-amber-400 text-indigo-950 px-3 py-1 rounded-lg font-extrabold">Mock Exam</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-amber-800 text-white py-8 px-4">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <div class="text-amber-300 text-xs font-bold uppercase tracking-wider mb-1">Section 4 of 4 • 8 Rules × 5 Variations</div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold">Inorganic Chemical Nomenclature & Formulas</h1>
+                <p class="text-amber-100 text-sm mt-1">All 40 compounds here are completely distinct from the final exam so you master the naming rules authentically.</p>
+            </div>
+            <button onclick="toggleCheatSheet()" class="bg-amber-950 hover:bg-black text-amber-300 border border-amber-500 px-4 py-2 rounded-xl text-xs font-bold shrink-0">
+                <i class="fa-solid fa-table-list mr-1.5"></i>Toggle Ion & Prefix Cheat Sheet
+            </button>
+        </div>
+    </header>
+
+    <!-- Collapsible Nomenclature Reference Bar -->
+    <div id="cheatSheet" class="hidden bg-amber-50 border-b border-amber-200 px-4 py-4">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="bg-white p-3 rounded-xl border border-amber-200">
+                <div class="font-extrabold text-amber-900 mb-1">Type I Fixed Charges</div>
+                <p><strong>1+:</strong> Li, Na, K, Rb, Cs, Ag</p>
+                <p><strong>2+:</strong> Be, Mg, Ca, Sr, Ba, Zn</p>
+                <p><strong>3+:</strong> Al</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-amber-200">
+                <div class="font-extrabold text-amber-900 mb-1">Type II Variable Metals (Roman Numerals)</div>
+                <p><strong>2+/3+:</strong> Fe, Cr, Mn, Co, Ni, Ti, V, Ga</p>
+                <p><strong>2+/4+:</strong> Sn, Pb, Pt | <strong>1+/2+:</strong> Cu, Hg | <strong>1+/3+:</strong> Au</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-amber-200">
+                <div class="font-extrabold text-amber-900 mb-1">Oxyacid Suffix Rule</div>
+                <p><strong>-ate</strong> polyatomic ion → <strong>-ic acid</strong></p>
+                <p><strong>-ite</strong> polyatomic ion → <strong>-ous acid</strong></p>
+                <p>Binary acid (no oxygen) → <strong>hydro-[root]-ic acid</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <main id="rulesContainer" class="max-w-5xl mx-auto px-4 py-8 space-y-8 flex-grow w-full"></main>
+
+    <div class="max-w-5xl mx-auto px-4 pb-10 w-full flex justify-between">
+        <a href="electrons.html" class="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-5 py-2.5 rounded-xl text-sm transition">
+            <i class="fa-solid fa-arrow-left mr-2"></i>Prev: Module 3 (Electrons)
+        </a>
+        <a href="exam_sim.html" class="bg-amber-400 hover:bg-amber-300 text-indigo-950 font-extrabold px-5 py-2.5 rounded-xl text-sm shadow transition">
+            Take 90-Min Timed Mock Exam<i class="fa-solid fa-stopwatch ml-2"></i>
+        </a>
+    </div>
+
+    <script>
+        const MODULE_PREFIX = 'm4_';
+        const rulesData = [
+            {
+                ruleNum: 1,
+                title: "Classifying Chemical Compound Types",
+                concept: "Binary Covalent = 2 nonmetals; Binary Ionic = 1 metal + 1 nonmetal (2 elements total); Polyatomic Ionic = contains a polyatomic ion (≥3 elements, metal or NH₄⁺); Oxyacid = starts with H + polyatomic oxyanion.",
+                hint: "Count the elements and check the first element: Starts with H + Oxygen → Oxyacid; 2 Nonmetals → Binary Covalent; Metal + 1 Nonmetal → Binary Ionic; 3+ elements with a metal/NH₄⁺ → Polyatomic Ionic.",
+                examples: [
+                    {
+                        q: "What type of compound is H₃PO₄?",
+                        options: ["Binary covalent compound", "Binary ionic compound", "Polyatomic ionic compound", "Oxyacid"],
+                        correct: 3,
+                        whyWrong: ["H₃PO₄ releases H⁺ in water and contains the phosphate oxyanion.", "It has 3 elements (H, P, O) and no metal.", "Compounds starting with H bonded to an oxyanion are classified as oxyacids.", null]
+                    },
+                    {
+                        q: "How is the compound MgCl₂ classified?",
+                        options: ["Binary covalent compound", "Binary ionic compound", "Polyatomic ionic compound", "Oxyacid"],
+                        correct: 1,
+                        whyWrong: ["Magnesium (Mg) is a metal, so this is ionic, not covalent.", null, "There are only 2 elements (Mg and Cl), no polyatomic ion.", "It does not start with hydrogen."]
+                    },
+                    {
+                        q: "What type of compound is K₂SO₄?",
+                        options: ["Binary covalent compound", "Binary ionic compound", "Polyatomic ionic compound", "Oxyacid"],
+                        correct: 2,
+                        whyWrong: ["Potassium (K) is a metal.", "There are 3 elements (K, S, O) because SO₄²⁻ is a polyatomic ion.", null, "It starts with a metal (K), not hydrogen."]
+                    },
+                    {
+                        q: "How is CS₂ (carbon disulfide) classified?",
+                        options: ["Binary covalent compound", "Binary ionic compound", "Polyatomic ionic compound", "Oxyacid"],
+                        correct: 0,
+                        whyWrong: [null, "Both Carbon and Sulfur are nonmetals.", "Only 2 elements are present (C and S).", "No hydrogen is present."]
+                    },
+                    {
+                        q: "What type of compound is NH₄Cl?",
+                        options: ["Binary covalent compound", "Binary ionic compound", "Polyatomic ionic compound", "Oxyacid"],
+                        correct: 2,
+                        whyWrong: ["NH₄⁺ (ammonium) is a polyatomic cation bonded ionically to Cl⁻.", "There are 3 elements (N, H, Cl) because of the ammonium polyatomic ion.", null, "NH₄⁺ is a basic/neutral cation, not an acid starting with H⁺."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 2,
+                title: "Binary Covalent Compounds (Formula → Name)",
+                concept: "For 2 nonmetals, use Greek prefixes (di-, tri-, tetra-, penta-, hexa-, hepta-, octa-, nona-, deca-). NEVER use 'mono-' on the first element. End the second element with '-ide'.",
+                hint: "Check both subscripts: never put 'mono-' on the first element, use the exact Greek prefix for the second element, and change the ending to '-ide'.",
+                examples: [
+                    {
+                        q: "Choose the correct name for the covalent compound N₂O₄:",
+                        options: ["Nitrogen tetroxide", "Dinitrogen tetroxide (or tetraoxide)", "Dinitride tetroxide", "Nitrogen (IV) oxide"],
+                        correct: 1,
+                        whyWrong: ["There are 2 nitrogen atoms, so you must include 'di-'.", null, "The first element keeps its full element name ('nitrogen'), not '-ide'.", "Roman numerals are only for Type II ionic metals, never two nonmetals."]
+                    },
+                    {
+                        q: "What is the systematic name of CCl₄?",
+                        options: ["Monocarbon tetrachloride", "Carbon tetrachloride", "Carbon chloride", "Carbon (IV) chloride"],
+                        correct: 1,
+                        whyWrong: ["Never use 'mono-' on the first element.", null, "Covalent compounds require prefixes to specify the 4 chlorines.", "Roman numerals are not used for nonmetal-nonmetal compounds."]
+                    },
+                    {
+                        q: "Choose the name of the compound Cl₂O₇:",
+                        options: ["Dichlorine heptoxide", "Chlorine heptoxide", "Dichloride heptoxide", "Dichlorine hexoxide"],
+                        correct: 0,
+                        whyWrong: [null, "Do not omit 'di-' when there are 2 chlorine atoms.", "The first element keeps its normal name ('chlorine').", "The prefix for 7 is 'hepta-', not 'hexa-' (6)."]
+                    },
+                    {
+                        q: "What is the correct name for SeF₆?",
+                        options: ["Monoselenium hexafluoride", "Selenium hexafluoride", "Selenium pentafluoride", "Selenium (VI) fluoride"],
+                        correct: 1,
+                        whyWrong: ["Omit 'mono-' on the first element.", null, "6 is 'hexa-', whereas 'penta-' means 5.", "Use Greek prefixes, not Roman numerals, for nonmetals."]
+                    },
+                    {
+                        q: "Choose the name of the compound As₂S₃:",
+                        options: ["Diarsenic trisulfide", "Arsenic trisulfide", "Diarsenide trisulfide", "Arsenic (III) sulfide"],
+                        correct: 0,
+                        whyWrong: [null, "Include 'di-' for the 2 arsenic atoms.", "Only the second element ends in '-ide'.", "Both As and S are nonmetals/metalloids; use Greek prefixes."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 3,
+                title: "Binary Covalent Compounds (Name → Formula)",
+                concept: "Translate each Greek prefix directly into the subscript for that element. Do NOT crisscross charges for covalent compounds!",
+                hint: "Simply match each prefix (di=2, tri=3, tetra=4, penta=5, hexa=6, hepta=7, octa=8, nona=9, deca=10) to its element's subscript.",
+                examples: [
+                    {
+                        q: "Choose the correct chemical formula for Tetraphosphorus decoxide:",
+                        options: ["P₄O₁₀", "P₁₀O₄", "P₂O₅", "PO₄"],
+                        correct: 0,
+                        whyWrong: [null, "Do not swap the subscripts; tetra = 4 (P) and deca = 10 (O).", "Do not reduce covalent molecular formulas to empirical ratios.", "Check the prefixes tetra- (4) and deca- (10)."]
+                    },
+                    {
+                        q: "What is the formula for Sulfur trioxide?",
+                        options: ["SO₃²⁻", "SO₃", "S₃O", "S₂O₃"],
+                        correct: 1,
+                        whyWrong: ["SO₃²⁻ is the sulfite ion; neutral sulfur trioxide has no charge.", null, "'tri-' belongs to oxygen, not sulfur.", "There is only 1 sulfur atom."]
+                    },
+                    {
+                        q: "Choose the formula for Dinitrogen monoxide:",
+                        options: ["NO₂", "N₂O", "N₂O₂", "NO"],
+                        correct: 1,
+                        whyWrong: ["NO₂ is nitrogen dioxide.", null, "'monoxide' means 1 oxygen atom.", "'di-' means 2 nitrogen atoms."]
+                    },
+                    {
+                        q: "What is the chemical formula for Iodine heptafluoride?",
+                        options: ["IF₇", "I₇F", "IF₆", "IF₅"],
+                        correct: 0,
+                        whyWrong: [null, "'hepta-' modifies fluoride, not iodine.", "6 is hexafluoride.", "5 is pentafluoride."]
+                    },
+                    {
+                        q: "Choose the formula for Silicon carbide (monosilicon monocarbide):",
+                        options: ["SiC", "Si₂C", "SiC₄", "Si₄C"],
+                        correct: 0,
+                        whyWrong: [null, "No 'di-' prefix is present.", "No 'tetra-' prefix is present.", "Silicon and carbon are in a 1:1 covalent ratio here."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 4,
+                title: "Type I Ionic Compounds (Fixed-Charge Metals)",
+                concept: "Type I metals (Groups 1, 2, Al, Zn, Ag) have only ONE fixed charge, so NEVER use Roman numerals or Greek prefixes! Crisscross ion charges to write formulas.",
+                hint: "Find the fixed metal charge (+1, +2, or +3) and the nonmetal/polyatomic charge, then crisscross the numbers so total charge = 0.",
+                examples: [
+                    {
+                        q: "Choose the correct formula for Barium nitride:",
+                        options: ["BaN", "Ba₂N₃", "Ba₃N₂", "Ba(NO₃)₂"],
+                        correct: 2,
+                        whyWrong: ["Ba is +2 and N is -3; they do not cancel in a 1:1 ratio.", "You forgot to swap the charges! Ba²⁺ and N³⁻ crisscross to Ba₃N₂.", null, "NO₃⁻ is nitrate; '-ide' means monatomic nitride (N³⁻)."]
+                    },
+                    {
+                        q: "What is the correct name for K₂S?",
+                        options: ["Dipotassium monosulfide", "Potassium (I) sulfide", "Potassium sulfide", "Potassium sulfate"],
+                        correct: 2,
+                        whyWrong: ["Never use Greek prefixes (di-, mono-) for ionic compounds.", "Potassium is a Type I metal (+1 only), so no Roman numeral is used.", null, "Sulfate is SO₄²⁻; monatomic S²⁻ is sulfide."]
+                    },
+                    {
+                        q: "Choose the formula for Aluminum oxide:",
+                        options: ["AlO", "Al₃O₂", "Al₂O₃", "Al(OH)₃"],
+                        correct: 2,
+                        whyWrong: ["Al is +3 and O is -2.", "Crisscross the magnitudes: 2 goes to Al, 3 goes to O.", null, "OH⁻ is hydroxide, not oxide."]
+                    },
+                    {
+                        q: "What is the correct name for Sr₃P₂?",
+                        options: ["Tristrontium diphosphide", "Strontium (II) phosphide", "Strontium phosphide", "Strontium phosphate"],
+                        correct: 2,
+                        whyWrong: ["Do not use Greek prefixes for ionic compounds.", "Strontium is in Group 2 (Type I), so no Roman numeral.", null, "Phosphate is PO₄³⁻; monatomic P³⁻ is phosphide."]
+                    },
+                    {
+                        q: "Choose the formula for Silver sulfide (Ag is always +1):",
+                        options: ["AgS", "Ag₂S", "AgS₂", "Ag₂SO₄"],
+                        correct: 1,
+                        whyWrong: ["Ag is +1 and S is -2, so two Ag⁺ ions are needed.", null, "Crisscross +1 and -2 to get Ag₂S.", "SO₄²⁻ is sulfate, not sulfide."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 5,
+                title: "Type II Ionic Compounds (Transition Metals & Roman Numerals)",
+                concept: "Type II metals (Fe, Cu, Sn, Pb, Cr, Co, Mn, Ni, Au, Hg, etc.) have multiple possible charges. The Roman numeral equals the METAL'S POSITIVE CHARGE (not its subscript!).",
+                hint: "Work backward from the negative anion's total charge to find the positive charge on ONE metal cation, then write that charge as a Roman numeral.",
+                examples: [
+                    {
+                        q: "Choose the correct name for the compound PbO₂:",
+                        options: ["Lead (II) oxide", "Lead (IV) oxide", "Lead dioxide", "Dilead monoxide"],
+                        correct: 1,
+                        whyWrong: ["Each oxygen is -2, so two oxygens = -4 total. Lead must be +4, not +2!", null, "Lead is a metal, so use Stock Roman numerals, not Greek prefixes.", "Check the charge balance: Pb⁴⁺ + 2(O²⁻) = 0."]
+                    },
+                    {
+                        q: "What is the chemical formula for Chromium(III) sulfide?",
+                        options: ["Cr₃S₂", "Cr₂S₃", "CrS₃", "Cr₃(SO₄)₂"],
+                        correct: 1,
+                        whyWrong: ["Cr is +3 and S is -2; crisscrossing gives Cr₂S₃.", null, "Sulfur has a -2 charge, so three sulfides would be -6.", "'-ide' means S²⁻, not sulfate."]
+                    },
+                    {
+                        q: "Choose the correct name for FeCl₂:",
+                        options: ["Iron dichloride", "Iron (I) chloride", "Iron (II) chloride", "Iron (III) chloride"],
+                        correct: 2,
+                        whyWrong: ["Ionic compounds do not use Greek prefixes like 'di-'.", "Two Cl⁻ ions give -2 total, so Iron is +2.", null, "Iron(III) chloride would be FeCl₃."]
+                    },
+                    {
+                        q: "What is the formula for Tin(II) fluoride?",
+                        options: ["Sn₂F", "SnF₂", "SnF₄", "TiF₂"],
+                        correct: 1,
+                        whyWrong: ["The Roman numeral (II) means Sn²⁺, while F is -1.", null, "SnF₄ is Tin(IV) fluoride.", "Ti is Titanium; Tin's symbol is Sn."]
+                    },
+                    {
+                        q: "Choose the correct name for Cu₃N:",
+                        options: ["Copper (I) nitride", "Copper (III) nitride", "Tricopper mononitride", "Copper (II) nitride"],
+                        correct: 0,
+                        whyWrong: [null, "The subscript 3 is the count of copper atoms, not its charge! Nitride is -3, so each of the 3 coppers is +1.", "Copper is a metal; use Roman numerals.", "3 × (+2) would be +6, which doesn't balance N³⁻."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 6,
+                title: "Polyatomic Ionic Compounds (Parentheses & Charges)",
+                concept: "Treat a polyatomic ion (NO₃⁻, SO₄²⁻, PO₄³⁻, CO₃²⁻, OH⁻, NH₄⁺) as a single unit. Put parentheses around it ONLY when its subscript is ≥ 2.",
+                hint: "Identify the cation charge and the polyatomic anion charge, crisscross the numbers, and use parentheses if more than 1 polyatomic group is needed.",
+                examples: [
+                    {
+                        q: "Choose the formula for Iron(II) phosphate:",
+                        options: ["FePO₄", "Fe₂(PO₄)₃", "Fe₃(PO₄)₂", "Fe₃P₂"],
+                        correct: 2,
+                        whyWrong: ["Fe is +2 and PO₄ is -3; they do not cancel 1:1.", "That would be Iron(III) phosphate.", null, "P³⁻ is phosphide; phosphate is PO₄³⁻."]
+                    },
+                    {
+                        q: "What is the correct name for Ba(OH)₂?",
+                        options: ["Barium dihydroxide", "Barium (II) hydroxide", "Barium hydroxide", "Barium oxide"],
+                        correct: 2,
+                        whyWrong: ["Do not use Greek prefixes for ionic compounds.", "Barium is a Type I Group 2 metal (+2 only), so no Roman numeral.", null, "OH⁻ is the hydroxide polyatomic ion."]
+                    },
+                    {
+                        q: "Choose the formula for Aluminum carbonate:",
+                        options: ["AlCO₃", "Al₂(CO₃)₃", "Al₃(CO₃)₂", "Al₂C₃"],
+                        correct: 1,
+                        whyWrong: ["Al is +3 and CO₃ is -2.", null, "Swap the charges: 2 goes to Al, 3 goes to CO₃.", "CO₃²⁻ is carbonate."]
+                    },
+                    {
+                        q: "What is the correct name for Cu(NO₃)₂?",
+                        options: ["Copper (I) nitrate", "Copper (II) nitrate", "Copper (II) nitrite", "Copper dinitrate"],
+                        correct: 1,
+                        whyWrong: ["Two NO₃⁻ ions give -2 total, so Copper is +2.", null, "NO₃⁻ is nitrATE; NO₂⁻ is nitrITE.", "Use Roman numerals for Copper, not prefixes."]
+                    },
+                    {
+                        q: "Choose the formula for Ammonium sulfate:",
+                        options: ["NH₄SO₄", "(NH₄)₂SO₄", "NH₄(SO₄)₂", "(NH₄)₂SO₃"],
+                        correct: 1,
+                        whyWrong: ["NH₄ is +1 and SO₄ is -2, so two ammonium ions are needed.", null, "Crisscross +1 and -2: the 2 goes outside (NH₄).", "SO₃²⁻ is sulfite; sulfate is SO₄²⁻."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 7,
+                title: "Binary Acids (hydro- + root + -ic acid)",
+                concept: "Acids with ONLY Hydrogen + one nonmetal (NO oxygen!) are named: hydro + [nonmetal root] + ic acid. Balance H⁺ (+1) with the anion's negative charge.",
+                hint: "No oxygen in the formula? Start with 'hydro-' and end with '-ic acid'. For formulas, match the number of H⁺ ions to the anion's negative charge.",
+                examples: [
+                    {
+                        q: "Choose the correct name for the aqueous binary acid HI:",
+                        options: ["Iodic acid", "Iodous acid", "Hydroiodic acid", "Hydrogen iodide acid"],
+                        correct: 2,
+                        whyWrong: ["Iodic acid is HIO₃ (contains oxygen).", "Iodous acid is HIO₂ (contains oxygen).", null, "Binary acids use the 'hydro-...-ic acid' pattern."]
+                    },
+                    {
+                        q: "What is the chemical formula for hydrochloric acid?",
+                        options: ["HClO₃", "HClO₂", "HCl", "HClO"],
+                        correct: 2,
+                        whyWrong: ["HClO₃ is chloric acid.", "HClO₂ is chlorous acid.", null, "HClO is hypochlorous acid."]
+                    },
+                    {
+                        q: "Choose the correct name for H₂Se(aq):",
+                        options: ["Selenic acid", "Hydroselenic acid", "Selenous acid", "Hydroselenous acid"],
+                        correct: 1,
+                        whyWrong: ["Selenic acid is H₂SeO₄.", null, "Selenous acid is H₂SeO₃.", "Binary acids always end in '-ic acid', never '-ous acid'."]
+                    },
+                    {
+                        q: "What is the formula for hydrotelluric acid (Tellurium is in Group 16, 2⁻ charge)?",
+                        options: ["HTe", "H₂Te", "H₂TeO₄", "H₂TeO₃"],
+                        correct: 1,
+                        whyWrong: ["Telluride has a -2 charge, requiring two H⁺ ions.", null, "No oxygen is present because of the 'hydro-' prefix.", "No oxygen is present."]
+                    },
+                    {
+                        q: "Which of the following is a binary acid?",
+                        options: ["HNO₃", "H₂SO₄", "HBr", "HClO₄"],
+                        correct: 2,
+                        whyWrong: ["HNO₃ contains oxygen (oxyacid).", "H₂SO₄ contains oxygen (oxyacid).", null, "HClO₄ contains oxygen (oxyacid)."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 8,
+                title: "Oxyacids (-ate → -ic acid | -ite → -ous acid)",
+                concept: "Acids containing Hydrogen + a polyatomic oxyanion NEVER use the prefix 'hydro-'. Instead: '-ate' ion → '-ic acid'; '-ite' ion → '-ous acid'.",
+                hint: "Identify the polyatomic ion inside the acid: if it ends in -ATE, change it to -IC acid. If it ends in -ITE, change it to -OUS acid. Never add 'hydro-'!",
+                examples: [
+                    {
+                        q: "Choose the correct name for HClO₃ (containing the chlorate ion, ClO₃⁻):",
+                        options: ["Hydrochloric acid", "Chloric acid", "Chlorous acid", "Perchloric acid"],
+                        correct: 1,
+                        whyWrong: ["Never use 'hydro-' when oxygen is present.", null, "Chlorous acid is HClO₂ (from chlorite).", "Perchloric acid is HClO₄ (from perchlorate)."]
+                    },
+                    {
+                        q: "What is the chemical formula for phosphoric acid (from the phosphate ion, PO₄³⁻)?",
+                        options: ["HPO₄", "H₂PO₄", "H₃PO₄", "H₃PO₃"],
+                        correct: 2,
+                        whyWrong: ["Phosphate has a -3 charge, so three H⁺ ions are required.", "Three H⁺ ions are needed to balance -3.", null, "H₃PO₃ is phosphorous acid (from phosphite)."]
+                    },
+                    {
+                        q: "Choose the correct name for H₂CO₃ (containing the carbonate ion, CO₃²⁻):",
+                        options: ["Hydrocarbonic acid", "Carbonous acid", "Carbonic acid", "Carboxylic acid"],
+                        correct: 2,
+                        whyWrong: ["Do not use 'hydro-' for oxyacids.", "CO₃²⁻ is carbonATE, which becomes '-ic acid'.", null, "Inorganic H₂CO₃ is carbonic acid."]
+                    },
+                    {
+                        q: "What is the formula for nitrous acid (from the nitrite ion, NO₂⁻)?",
+                        options: ["HNO₃", "HNO₂", "H₂NO₂", "HN₃"],
+                        correct: 1,
+                        whyWrong: ["HNO₃ is nitric acid (from nitrate).", null, "Nitrite has a -1 charge, so only one H⁺ is needed.", "HN₃ is hydrazoic acid."]
+                    },
+                    {
+                        q: "Choose the correct name for HClO (containing the hypochlorite ion, ClO⁻):",
+                        options: ["Hydrochloric acid", "Hypochlorous acid", "Chlorous acid", "Hypochloric acid"],
+                        correct: 1,
+                        whyWrong: ["HCl is hydrochloric acid.", null, "Chlorous acid is HClO₂.", "'-ite' changes to '-ous', so hypochlorite becomes hypochlorous acid."]
+                    }
+                ]
+            }
+        ];
+
+        const activeExampleIdx = rulesData.map(() => 0);
+        function getSolvedIds() { return JSON.parse(localStorage.getItem('pp_solved_ids') || '[]'); }
+        function markSolved(exId) {
+            const solved = getSolvedIds();
+            if (!solved.includes(exId)) { solved.push(exId); localStorage.setItem('pp_solved_ids', JSON.stringify(solved)); }
+            updateBadge();
+        }
+        function updateBadge() {
+            const solved = getSolvedIds().filter(id => id.startsWith(MODULE_PREFIX)).length;
+            document.getElementById('modBadge').textContent = `${solved}/40`;
+        }
+        function toggleCheatSheet() {
+            document.getElementById('cheatSheet').classList.toggle('hidden');
+        }
+
+        function renderRules() {
+            const container = document.getElementById('rulesContainer');
+            const solved = getSolvedIds();
+            container.innerHTML = '';
+
+            rulesData.forEach((rule, rIdx) => {
+                const exIdx = activeExampleIdx[rIdx];
+                const ex = rule.examples[exIdx];
+                const exId = `${MODULE_PREFIX}r${rule.ruleNum}_e${exIdx + 1}`;
+                const isSolved = solved.includes(exId);
+
+                let ruleSolvedCount = 0;
+                for (let i = 1; i <= 5; i++) {
+                    if (solved.includes(`${MODULE_PREFIX}r${rule.ruleNum}_e${i}`)) ruleSolvedCount++;
+                }
+
+                const card = document.createElement('section');
+                card.className = "bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden";
+                card.innerHTML = `
+                    <div class="bg-slate-900 text-white px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Rule ${rule.ruleNum} of 8</span>
+                            <h2 class="text-lg font-extrabold">${rule.title}</h2>
+                        </div>
+                        <span class="text-xs bg-slate-800 px-3 py-1 rounded-full text-slate-300">
+                            Rule Mastery: <strong class="text-emerald-400">${ruleSolvedCount}/5</strong>
+                        </span>
+                    </div>
+
+                    <div class="p-6 space-y-5">
+                        <div class="bg-amber-50 border-l-4 border-amber-500 p-3.5 rounded-r-xl text-xs sm:text-sm text-amber-950">
+                            <strong>Core Principle:</strong> ${rule.concept}
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="text-xs font-bold text-slate-500 uppercase mr-1">Practice Variations:</span>
+                            ${[0, 1, 2, 3, 4].map(i => {
+                                const varDone = solved.includes(`${MODULE_PREFIX}r${rule.ruleNum}_e${i + 1}`);
+                                const isActive = i === exIdx;
+                                return `
+                                    <button onclick="selectVariation(${rIdx}, ${i})"
+                                        class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 border
+                                        ${isActive ? 'bg-indigo-600 text-white border-indigo-600 shadow' : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'}">
+                                        <span>Example ${i + 1}</span>
+                                        ${varDone ? '<i class="fa-solid fa-circle-check text-emerald-400"></i>' : ''}
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div class="flex justify-between items-start gap-2 mb-2">
+                                <span class="text-xs font-extrabold text-indigo-600 uppercase">Exercise ${rule.ruleNum}.${exIdx + 1}</span>
+                                ${isSolved ? '<span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full"><i class="fa-solid fa-check mr-1"></i>Mastered</span>' : ''}
+                            </div>
+                            <p class="text-slate-900 font-semibold text-sm sm:text-base whitespace-pre-line leading-relaxed">${ex.q}</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            ${ex.options.map((opt, oIdx) => {
+                                const letters = ['A', 'B', 'C', 'D'];
+                                return `
+                                    <button onclick="checkAnswer(${rIdx}, ${oIdx})"
+                                        id="btn_${rIdx}_${oIdx}"
+                                        class="text-left p-3.5 rounded-xl border-2 border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/40 transition flex items-start gap-3 text-sm font-medium text-slate-800">
+                                        <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 font-extrabold flex items-center justify-center shrink-0 text-xs">${letters[oIdx]}</span>
+                                        <span class="pt-0.5">${opt}</span>
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div id="feedback_${rIdx}" class="hidden rounded-xl p-4 text-sm"></div>
+
+                        <div class="flex justify-end">
+                            <button onclick="showHint(${rIdx})" class="text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-lightbulb text-amber-500"></i> Need a Socratic Hint?
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function selectVariation(rIdx, exIdx) { activeExampleIdx[rIdx] = exIdx; renderRules(); }
+
+        function showHint(rIdx) {
+            const rule = rulesData[rIdx];
+            const fb = document.getElementById(`feedback_${rIdx}`);
+            fb.className = "rounded-xl p-4 text-sm bg-amber-50 border border-amber-300 text-amber-950 block";
+            fb.innerHTML = `<div class="font-bold flex items-center gap-2 mb-1"><i class="fa-solid fa-compass text-amber-600"></i> Guiding Hint (Rule ${rule.ruleNum}):</div><p>${rule.hint}</p>`;
+        }
+
+        function checkAnswer(rIdx, chosenIdx) {
+            const rule = rulesData[rIdx];
+            const exIdx = activeExampleIdx[rIdx];
+            const ex = rule.examples[exIdx];
+            const fb = document.getElementById(`feedback_${rIdx}`);
+
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`btn_${rIdx}_${i}`).classList.remove('border-rose-500', 'bg-rose-50', 'border-emerald-500', 'bg-emerald-50');
+            }
+
+            const chosenBtn = document.getElementById(`btn_${rIdx}_${chosenIdx}`);
+            if (chosenIdx === ex.correct) {
+                chosenBtn.classList.add('border-emerald-500', 'bg-emerald-50');
+                markSolved(`${MODULE_PREFIX}r${rule.ruleNum}_e${exIdx + 1}`);
+                fb.className = "rounded-xl p-4 text-sm bg-emerald-50 border border-emerald-300 text-emerald-950 block";
+                fb.innerHTML = `<div class="font-extrabold text-emerald-800 flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i><span>Correct! You applied the nomenclature rule accurately.</span></div><p class="mt-1 text-xs text-emerald-800">Try the other 4 examples in this rule to make sure you won't miss a single compound on the exam.</p>`;
+            } else {
+                chosenBtn.classList.add('border-rose-500', 'bg-rose-50');
+                const diagnostic = ex.whyWrong[chosenIdx] || "Check the compound type (ionic vs. covalent vs. acid) and verify charge balance.";
+                fb.className = "rounded-xl p-4 text-sm bg-rose-50 border border-rose-300 text-rose-950 block";
+                fb.innerHTML = `<div class="font-extrabold text-rose-800 flex items-center gap-2"><i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i><span>Not quite — check the naming rule:</span></div><p class="mt-1 font-medium">${diagnostic}</p><div class="mt-2 pt-2 border-t border-rose-200 text-xs text-rose-900"><strong>Clue:</strong> ${rule.hint}</div>`;
+            }
+        }
+
+        window.onload = () => { updateBadge(); renderRules(); };
+    </script>
+</body>
+</html>

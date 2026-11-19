@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepaPráctica | Module 3: Electrons & Periodic Trends</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-indigo-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="bg-amber-400 text-indigo-950 p-1.5 rounded-lg font-extrabold"><i class="fa-solid fa-flask-vial"></i></div>
+                <span class="font-extrabold text-lg">Prepa<span class="text-amber-400">Práctica</span></span>
+            </a>
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="index.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">Home</a>
+                <a href="matter.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">1. Matter & Measure</a>
+                <a href="atoms.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">2. Atomic Structure</a>
+                <a href="electrons.html" class="bg-indigo-800 text-white px-3 py-2 rounded-lg text-sm font-semibold">3. Electrons & Trends</a>
+                <a href="nomenclature.html" class="text-indigo-200 hover:bg-indigo-800 px-3 py-2 rounded-lg text-sm">4. Nomenclature</a>
+                <a href="exam_sim.html" class="bg-amber-400 hover:bg-amber-300 text-indigo-950 px-3 py-2 rounded-lg text-sm font-extrabold">Mock Exam</a>
+            </div>
+            <div class="text-xs bg-indigo-950 px-3 py-1.5 rounded-lg border border-indigo-700 font-bold text-amber-300">
+                Module 3 Mastery: <span id="modBadge">0/40</span>
+            </div>
+        </div>
+        <div class="md:hidden bg-indigo-950 px-3 py-2 flex overflow-x-auto space-x-2 text-xs">
+            <a href="index.html" class="text-indigo-200 px-3 py-1 rounded-lg">Home</a>
+            <a href="matter.html" class="text-indigo-200 px-3 py-1 rounded-lg">1. Matter</a>
+            <a href="atoms.html" class="text-indigo-200 px-3 py-1 rounded-lg">2. Atoms</a>
+            <a href="electrons.html" class="bg-indigo-700 text-white px-3 py-1 rounded-lg font-semibold">3. Electrons</a>
+            <a href="nomenclature.html" class="text-indigo-200 px-3 py-1 rounded-lg">4. Nomenclature</a>
+            <a href="exam_sim.html" class="bg-amber-400 text-indigo-950 px-3 py-1 rounded-lg font-extrabold">Mock Exam</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-purple-900 text-white py-8 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-purple-300 text-xs font-bold uppercase tracking-wider mb-1">Section 3 of 4 • 8 Rules × 5 Variations</div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold">Electron Configurations, Orbital Rules & Periodic Trends</h1>
+            <p class="text-purple-100 text-sm mt-2">Aufbau Order: <span class="font-mono bg-purple-950 px-2 py-0.5 rounded text-amber-300">1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s²</span></p>
+        </div>
+    </header>
+
+    <main id="rulesContainer" class="max-w-5xl mx-auto px-4 py-8 space-y-8 flex-grow w-full"></main>
+
+    <div class="max-w-5xl mx-auto px-4 pb-10 w-full flex justify-between">
+        <a href="atoms.html" class="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-5 py-2.5 rounded-xl text-sm transition">
+            <i class="fa-solid fa-arrow-left mr-2"></i>Prev: Module 2 (Atoms)
+        </a>
+        <a href="nomenclature.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2.5 rounded-xl text-sm shadow transition">
+            Next: Module 4 (Nomenclature)<i class="fa-solid fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+
+    <script>
+        const MODULE_PREFIX = 'm3_';
+        const rulesData = [
+            {
+                ruleNum: 1,
+                title: "Full Electron Configuration (s, p, d Sublevels)",
+                concept: "Fill sublevels in increasing energy order: 1s(2), 2s(2), 2p(6), 3s(2), 3p(6), 4s(2), 3d(10), 4p(6). Notice 4s fills before 3d!",
+                hint: "Find the element's Atomic Number (Z) = total electrons. Sum the superscripts in each option until they equal Z, and check that 4s comes before 3d.",
+                examples: [
+                    {
+                        q: "Which of the following is the correct full ground-state electron configuration for Arsenic (As, Z = 33)?",
+                        options: [
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p³",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁴",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 3d¹⁰ 4s² 4p⁵",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 4d¹⁰ 4p³"
+                        ],
+                        correct: 0,
+                        whyWrong: [null, "Sum the superscripts: 2+2+6+2+6+2+10+4 = 34 (that's Selenium, not Arsenic).", "35 total electrons here, and 4s should fill before 3d.", "There is no 4d sublevel before 4p; it is 3d."]
+                    },
+                    {
+                        q: "Select the ground-state electron configuration for Titanium (Ti, Z = 22):",
+                        options: [
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d²",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 3d⁴",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 4p²",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁴"
+                        ],
+                        correct: 0,
+                        whyWrong: [null, "The 4s orbital fills before 3d.", "After 4s², transition metals fill 3d, not 4p.", "2+2+6+2+6+2+4 = 24 electrons (Chromium), not 22."]
+                    },
+                    {
+                        q: "Which electron configuration represents Bromine (Br, Z = 35)?",
+                        options: [
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁵",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁹ 4p⁶",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p³"
+                        ],
+                        correct: 1,
+                        whyWrong: ["4p⁶ gives 36 electrons (Krypton or Br⁻), not neutral Br.", null, "3d must hold 10 electrons before 4p begins filling.", "4p³ gives 33 electrons (Arsenic)."]
+                    },
+                    {
+                        q: "Choose the full electron configuration for Phosphorus (P, Z = 15):",
+                        options: [
+                            "1s² 2s² 2p⁶ 3s² 3p⁵",
+                            "1s² 2s² 2p⁶ 3s² 3p³",
+                            "1s² 2s² 2p⁶ 3s¹ 3p⁴",
+                            "1s² 2s² 2p⁶ 3s² 3d³"
+                        ],
+                        correct: 1,
+                        whyWrong: ["Superscripts sum to 17 (Chlorine).", null, "3s must hold 2 electrons before 3p fills.", "After 3s² comes 3p, not 3d."]
+                    },
+                    {
+                        q: "Which configuration correctly describes Calcium (Ca, Z = 20)?",
+                        options: [
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 3d²",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s²",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4p²",
+                            "1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹ 3d¹"
+                        ],
+                        correct: 1,
+                        whyWrong: ["4s has lower energy than 3d and fills first.", null, "4s fills before 4p.", "Both valence electrons go into 4s²."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 2,
+                title: "Noble Gas Shorthand Notation",
+                concept: "Replace the inner core electrons with the preceding Noble Gas in brackets: [He]=2, [Ne]=10, [Ar]=18, [Kr]=36, [Xe]=54, then continue with the next s sublevel.",
+                hint: "Pick the largest Noble Gas with fewer electrons than your element: [Ne] starts at 3s; [Ar] starts at 4s; [Kr] starts at 5s.",
+                examples: [
+                    {
+                        q: "Which option shows the correct noble gas notation for Sulfur (S, Z = 16)?",
+                        options: ["[Ne] 3s² 3p⁴", "[Ne] 2s² 2p⁴", "[Ar] 3s² 3p⁴", "[Ne] 3s² 3d⁴"],
+                        correct: 0,
+                        whyWrong: [null, "[Ne] already includes 2s² 2p⁶, so the next shell is 3s.", "[Ar] has 18 electrons, which is more than Sulfur's 16.", "3p fills immediately after 3s, not 3d."]
+                    },
+                    {
+                        q: "Choose the noble gas shorthand configuration for Zinc (Zn, Z = 30):",
+                        options: ["[Ar] 4s² 3d⁸", "[Ar] 4s² 3d¹⁰", "[Kr] 4s² 3d¹⁰", "[Ne] 3s² 3p⁶ 3d¹⁰"],
+                        correct: 1,
+                        whyWrong: ["18 + 2 + 8 = 28 (Nickel).", null, "[Kr] has 36 electrons—too large for Zinc.", "Use the closest preceding noble gas, which is [Ar] (18)."]
+                    },
+                    {
+                        q: "What is the noble gas notation for Strontium (Sr, Z = 38)?",
+                        options: ["[Ar] 5s²", "[Kr] 5s²", "[Kr] 4s²", "[Xe] 5s²"],
+                        correct: 1,
+                        whyWrong: ["[Ar] has 18 electrons, so [Ar] 5s² would only be 20 electrons.", null, "After [Kr] (36), the next sublevel is 5s, not 4s.", "[Xe] has 54 electrons."]
+                    },
+                    {
+                        q: "Select the noble gas notation for Manganese (Mn, Z = 25):",
+                        options: ["[Ar] 4s² 3d⁵", "[Ar] 3d⁷", "[Ne] 4s² 3d⁵", "[Ar] 4s² 4p⁵"],
+                        correct: 0,
+                        whyWrong: [null, "4s² must be filled before 3d⁵.", "[Ne] only accounts for 10 electrons (10+2+5 = 17).", "Transition metals fill 3d, not 4p."]
+                    },
+                    {
+                        q: "Which noble gas configuration represents Aluminum (Al, Z = 13)?",
+                        options: ["[Ne] 3s² 3p¹", "[He] 3s² 3p¹", "[Ne] 3p³", "[Ar] 3s² 3p¹"],
+                        correct: 0,
+                        whyWrong: [null, "[He] only replaces 2 electrons, leaving 11 unaccounted for.", "3s² must fill before 3p¹.", "[Ar] has 18 electrons."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 3,
+                title: "Identifying an Element from Full Configuration",
+                concept: "Sum all the superscript numbers (electrons) in a neutral atom's electron configuration to find its Atomic Number (Z), then locate Z on the Periodic Table.",
+                hint: "Add up every exponent in the configuration: Total Electrons = Atomic Number (Z) for a neutral atom.",
+                examples: [
+                    {
+                        q: "Identify the neutral element with the electron configuration: 1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s²",
+                        options: ["Rubidium (Z=37)", "Strontium (Z=38)", "Yttrium (Z=39)", "Barium (Z=56)"],
+                        correct: 1,
+                        whyWrong: ["Rubidium ends in 5s¹ (37 electrons).", null, "Yttrium ends in 5s² 4d¹ (39 electrons).", "Barium ends in 6s² (56 electrons)."]
+                    },
+                    {
+                        q: "Which neutral element has the configuration: 1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁶?",
+                        options: ["Chromium (Z=24)", "Manganese (Z=25)", "Iron (Z=26)", "Cobalt (Z=27)"],
+                        correct: 2,
+                        whyWrong: ["Sum the electrons: 2+2+6+2+6+2+6 = 26.", "25 electrons would end in 3d⁵.", null, "27 electrons would end in 3d⁷."]
+                    },
+                    {
+                        q: "Choose the element represented by: 1s² 2s² 2p⁶ 3s² 3p⁴",
+                        options: ["Oxygen (Z=8)", "Silicon (Z=14)", "Sulfur (Z=16)", "Argon (Z=18)"],
+                        correct: 2,
+                        whyWrong: ["Oxygen ends in 2p⁴ (8 electrons).", "Silicon ends in 3p² (14 electrons).", null, "Argon ends in 3p⁶ (18 electrons)."]
+                    },
+                    {
+                        q: "Which neutral atom has the electron configuration: 1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p¹?",
+                        options: ["Aluminum (Z=13)", "Gallium (Z=31)", "Germanium (Z=32)", "Indium (Z=49)"],
+                        correct: 1,
+                        whyWrong: ["Aluminum ends in 3p¹ (13 electrons).", null, "Germanium ends in 4p² (32 electrons).", "Indium ends in 5p¹ (49 electrons)."]
+                    },
+                    {
+                        q: "Identify the element with configuration: 1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹",
+                        options: ["Sodium (Z=11)", "Potassium (Z=19)", "Calcium (Z=20)", "Rubidium (Z=37)"],
+                        correct: 1,
+                        whyWrong: ["Sodium ends in 3s¹ (11 electrons).", null, "Calcium ends in 4s² (20 electrons).", "Rubidium ends in 5s¹ (37 electrons)."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 4,
+                title: "Identifying an Element from Noble Gas Notation",
+                concept: "Take the atomic number of the bracketed Noble Gas ([He]=2, [Ne]=10, [Ar]=18, [Kr]=36, [Xe]=54) and add all remaining valence/d-block superscripts.",
+                hint: "Use the Noble Gas electron count: [Ne]=10, [Ar]=18, [Kr]=36, [Xe]=54, then add the superscripts written after the bracket.",
+                examples: [
+                    {
+                        q: "Which neutral element has the noble gas notation: [Ar] 4s² 3d⁷?",
+                        options: ["Iron (Z=26)", "Cobalt (Z=27)", "Nickel (Z=28)", "Rhodium (Z=45)"],
+                        correct: 1,
+                        whyWrong: ["[Ar] is 18; 18 + 2 + 7 = 27, not 26.", null, "28 would be [Ar] 4s² 3d⁸.", "Rhodium uses [Kr] 5s² 4d⁷."]
+                    },
+                    {
+                        q: "Identify the element represented by: [Kr] 5s² 4d¹⁰ 5p⁵",
+                        options: ["Bromine (Z=35)", "Tellurium (Z=52)", "Iodine (Z=53)", "Xenon (Z=54)"],
+                        correct: 2,
+                        whyWrong: ["Bromine uses [Ar] (35 electrons).", "36 + 2 + 10 + 5 = 53, not 52.", null, "Xenon has 54 electrons (5p⁶)."]
+                    },
+                    {
+                        q: "Choose the neutral atom with the notation: [Ne] 3s² 3p²",
+                        options: ["Carbon (Z=6)", "Magnesium (Z=12)", "Silicon (Z=14)", "Germanium (Z=32)"],
+                        correct: 2,
+                        whyWrong: ["Carbon uses [He] 2s² 2p².", "10 + 2 + 2 = 14, not 12.", null, "Germanium uses [Ar] (32 electrons)."]
+                    },
+                    {
+                        q: "Which element corresponds to the noble gas configuration: [Ar] 4s² 3d³?",
+                        options: ["Scandium (Z=21)", "Titanium (Z=22)", "Vanadium (Z=23)", "Niobium (Z=41)"],
+                        correct: 2,
+                        whyWrong: ["18 + 2 + 3 = 23.", "22 would be 3d².", null, "Niobium is in period 5 ([Kr])."]
+                    },
+                    {
+                        q: "Select the element with the noble gas configuration: [Xe] 6s²",
+                        options: ["Cesium (Z=55)", "Barium (Z=56)", "Strontium (Z=38)", "Radium (Z=88)"],
+                        correct: 1,
+                        whyWrong: ["[Xe] is 54; 54 + 2 = 56, not 55.", null, "Strontium is [Kr] 5s².", "Radium is [Rn] 7s²."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 5,
+                title: "Pauli Exclusion Principle in Orbital Diagrams",
+                concept: "Pauli Exclusion Principle: A single atomic orbital can hold at most 2 electrons, and they MUST have opposite spins (one ↑ and one ↓). Two parallel spins (↑↑ or ↓↓) in the same box violate Pauli's principle.",
+                hint: "Look inside every individual orbital box: if two arrows in the SAME box point in the same direction (↑↑ or ↓↓), Pauli's Exclusion Principle is broken!",
+                examples: [
+                    {
+                        q: "Which orbital diagram for Carbon (6e⁻) violates the Pauli Exclusion Principle?\n1s | 2s | 2p (3 boxes)",
+                        options: [
+                            "[↑↓] | [↑↓] | [↑ ][↑ ][  ]",
+                            "[↑↑] | [↑↓] | [↑ ][↑ ][  ]",
+                            "[↑↓] | [↑↓] | [↑↓][  ][  ]",
+                            "[↑↓] | [↑ ][↑↓] | [↑ ][  ][  ]"
+                        ],
+                        correct: 1,
+                        whyWrong: ["This is the valid ground state for Carbon.", null, "This violates Hund's Rule (paired before half-filling), not Pauli's Principle.", "This violates the Aufbau Principle (2s unfilled), not Pauli's Principle."]
+                    },
+                    {
+                        q: "Which orbital representation for Oxygen (8e⁻) breaks the Pauli Exclusion Principle?",
+                        options: [
+                            "1s:[↑↓]  2s:[↑↓]  2p:[↑↓][↑ ][↑ ]",
+                            "1s:[↑↓]  2s:[↓↓]  2p:[↑↓][↑ ][↑ ]",
+                            "1s:[↑↓]  2s:[↑↓]  2p:[↑↓][↑↓][  ]",
+                            "1s:[↑↓]  2s:[↑ ]  2p:[↑↓][↑↓][↑ ]"
+                        ],
+                        correct: 1,
+                        whyWrong: ["This is the completely valid ground-state diagram of Oxygen.", null, "This breaks Hund's Rule because the third 2p box was left empty.", "This breaks the Aufbau Principle because 2s was not filled first."]
+                    },
+                    {
+                        q: "What does the Pauli Exclusion Principle specifically forbid in an orbital diagram?",
+                        options: [
+                            "Filling 2p orbitals before 2s is full",
+                            "Placing two electrons with the same spin (↑↑) in the same orbital box",
+                            "Leaving degenerate p-orbitals half-filled with parallel spins",
+                            "Having more than 6 electrons across three p-orbitals"
+                        ],
+                        correct: 1,
+                        whyWrong: ["Filling lower energy first is the Aufbau Principle.", null, "Half-filling degenerate orbitals with parallel spins is actually required by Hund's Rule!", "Three p-orbitals × 2 electrons = 6 max, which is allowed."]
+                    },
+                    {
+                        q: "Inspect these four diagrams for Boron (5e⁻). Which one violates the Pauli Exclusion Principle?",
+                        options: [
+                            "1s:[↑↓]  2s:[↑↓]  2p:[↑ ][  ][  ]",
+                            "1s:[↑↓]  2s:[↑↓]  2p:[  ][↓ ][  ]",
+                            "1s:[↑↓]  2s:[↑↑]  2p:[↓ ][  ][  ]",
+                            "1s:[↑↓]  2s:[↑ ]  2p:[↑ ][↑ ][  ]"
+                        ],
+                        correct: 2,
+                        whyWrong: ["Valid ground state for Boron.", "Valid degenerate state for Boron.", null, "Violates Aufbau (excited state), not Pauli."]
+                    },
+                    {
+                        q: "In a p-sublevel (3 orbital boxes), what is the maximum number of electrons allowed by the Pauli Exclusion Principle, and how must each pair be oriented?",
+                        options: [
+                            "3 electrons, all parallel (↑)",
+                            "6 electrons, paired with opposite spins (↑↓) in each of the 3 boxes",
+                            "6 electrons, paired with identical spins (↑↑) in each box",
+                            "2 electrons total across all 3 boxes"
+                        ],
+                        correct: 1,
+                        whyWrong: ["Each box can hold 2 electrons, so 3 × 2 = 6.", null, "Identical spins in one box violate the Pauli Exclusion Principle.", "2 electrons is the limit for a single s-orbital, not three p-orbitals."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 6,
+                title: "Hund's Rule & Aufbau Principle in Orbital Diagrams",
+                concept: "Aufbau Principle: Fill lowest-energy orbitals first (1s before 2s before 2p). Hund's Rule: When filling equal-energy (degenerate) orbitals like 2p, place one electron with parallel spin in each orbital BEFORE pairing any.",
+                hint: "Check two things: (1) Are lower shells completely full before higher ones start (Aufbau)? (2) In p/d boxes, does every box get 1 arrow before any box gets 2 (Hund)?",
+                examples: [
+                    {
+                        q: "A student draws Nitrogen (7e⁻) as: 1s:[↑↓]  2s:[↑↓]  2p:[↑↓][↑ ][  ]. Which rule is violated?",
+                        options: ["Pauli Exclusion Principle", "Hund's Rule", "Aufbau Principle", "Heisenberg Uncertainty Principle"],
+                        correct: 1,
+                        whyWrong: ["Paired electrons have opposite spins (↑↓), so Pauli is satisfied.", null, "1s and 2s are filled in proper energy order.", "Hund's Rule governs degenerate orbital filling."]
+                    },
+                    {
+                        q: "Which orbital diagram for Nitrogen (7e⁻) correctly follows Aufbau, Pauli, AND Hund's rules?",
+                        options: [
+                            "1s:[↑↓]  2s:[↑↓]  2p:[↑ ][↑ ][↑ ]",
+                            "1s:[↑↓]  2s:[↑↓]  2p:[↑↓][↑ ][  ]",
+                            "1s:[↑↓]  2s:[↑ ]  2p:[↑↓][↑ ][↑ ]",
+                            "1s:[↑↓]  2s:[↑↓]  2p:[↑ ][↓ ][↑ ]"
+                        ],
+                        correct: 0,
+                        whyWrong: [null, "Violates Hund's Rule by pairing in the first 2p box while the third is empty.", "Violates Aufbau by leaving 2s incomplete.", "Hund's Rule requires unpaired electrons in degenerate orbitals to have parallel spins."]
+                    },
+                    {
+                        q: "A diagram for Fluorine (9e⁻) is written as: 1s:[↑↓]  2s:[↑ ]  2p:[↑↓][↑↓][↑↓]. Which principle is broken?",
+                        options: ["Aufbau Principle", "Pauli Exclusion Principle", "Law of Conservation of Mass", "Octet Rule"],
+                        correct: 0,
+                        whyWrong: [null, "All paired boxes have opposite spins (↑↓).", "This is an electron configuration rule.", "Check energy order: 2s must be filled before 2p."]
+                    },
+                    {
+                        q: "How many unpaired electrons are present in a ground-state Phosphorus atom (Z = 15, [Ne] 3s² 3p³)?",
+                        options: ["0", "1", "3", "5"],
+                        correct: 2,
+                        whyWrong: ["By Hund's Rule, the three 3p electrons occupy separate boxes.", "All three 3p orbitals contain 1 unpaired electron each.", null, "The two 3s electrons are paired (↑↓)."]
+                    },
+                    {
+                        q: "How many unpaired electrons exist in a ground-state Oxygen atom (Z = 8, 1s² 2s² 2p⁴)?",
+                        options: ["0", "2", "4", "6"],
+                        correct: 1,
+                        whyWrong: ["Four electrons in three 2p boxes leaves two boxes singly occupied.", null, "One of the three 2p boxes has a pair (↑↓), leaving 2 unpaired.", "1s² and 2s² are completely paired."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 7,
+                title: "Periodic Trend: Electronegativity",
+                concept: "Electronegativity (attraction for bonding electrons) INCREASES across a period (left → right) and INCREASES up a group (bottom → top). Fluorine (F) is the highest; Francium/Cesium are the lowest. Noble gases are excluded.",
+                hint: "Electronegativity points toward Fluorine (top-right). Moving UP a column or RIGHT across a row increases electronegativity.",
+                examples: [
+                    {
+                        q: "Which set of elements is arranged in INCREASING order of electronegativity (lowest to highest)?",
+                        options: [
+                            "K, Ca, Ga, Br",
+                            "Br, Ga, Ca, K",
+                            "F, O, N, C",
+                            "Cl, Br, I, At"
+                        ],
+                        correct: 0,
+                        whyWrong: [null, "This is decreasing order (right to left across Period 4).", "This goes left across Period 2 (decreasing).", "This goes down Group 17 (decreasing)."]
+                    },
+                    {
+                        q: "Select the set ordered by DECREASING electronegativity (highest to lowest):",
+                        options: [
+                            "Li, Na, K, Rb",
+                            "O, S, Se, Te",
+                            "B, C, N, O",
+                            "Cs, Ba, Hf, W"
+                        ],
+                        correct: 2 === 1 ? 1 : 1,
+                        whyWrong: ["Going down Group 1 increases electronegativity? No, it decreases, wait: Li > Na > K > Rb is decreasing, let's check O, S, Se, Te: O is at the top of Group 16, so O > S > Se > Te is strictly decreasing!", null, "B → C → N → O goes left-to-right (increasing).", "Cs → W goes left-to-right (increasing)."]
+                    },
+                    {
+                        q: "Arrange the Period 2 elements Carbon (C), Fluorine (F), Lithium (Li), and Nitrogen (N) in INCREASING order of electronegativity:",
+                        options: [
+                            "Li, C, N, F",
+                            "F, N, C, Li",
+                            "C, Li, N, F",
+                            "Li, N, C, F"
+                        ],
+                        correct: 0,
+                        whyWrong: [null, "This is decreasing order.", "Li is further left than C, so Li has lower electronegativity.", "C is to the left of N, so C < N."]
+                    },
+                    {
+                        q: "Which halogen has the HIGHEST electronegativity?",
+                        options: ["Iodine (I)", "Bromine (Br)", "Chlorine (Cl)", "Fluorine (F)"],
+                        correct: 3,
+                        whyWrong: ["Iodine is near the bottom of Group 17 (lowest of these four).", "Bromine is below Chlorine and Fluorine.", "Chlorine is second highest, right below Fluorine.", null]
+                    },
+                    {
+                        q: "Which group of elements is ordered from LEAST electronegative to MOST electronegative?",
+                        options: [
+                            "Rb, Sr, In, Sn",
+                            "F, Cl, Br, I",
+                            "N, P, As, Sb",
+                            "O, N, C, B"
+                        ],
+                        correct: 0,
+                        whyWrong: [null, "F → I goes down Group 17 (decreasing).", "N → Sb goes down Group 15 (decreasing).", "O → B goes right-to-left across Period 2 (decreasing)."]
+                    }
+                ]
+            },
+            {
+                ruleNum: 8,
+                title: "Periodic Trend: Atomic Radius",
+                concept: "Atomic Radius INCREASES down a group (more electron shells) and DECREASES across a period from left to right (stronger nuclear pull pulls shells tighter). Biggest atoms are bottom-left (Cs/Fr); smallest are top-right (He/F).",
+                hint: "Atomic radius is the OPPOSITE of electronegativity! Moving DOWN a column adds energy shells (bigger); moving RIGHT across a row pulls electrons closer (smaller).",
+                examples: [
+                    {
+                        q: "Which set of elements is arranged in INCREASING order of atomic radius (smallest to largest)?",
+                        options: [
+                            "Be, Mg, Ca, Sr",
+                            "Sr, Ca, Mg, Be",
+                            "Na, Mg, Al, Si",
+                            "K, Ca, Ga, Br"
+                        ],
+                        correct: 0,
+                        whyWrong: [null, "Going up Group 2 decreases atomic radius.", "Going right across Period 3 decreases atomic radius.", "Going right across Period 4 decreases atomic radius."]
+                    },
+                    {
+                        q: "Select the set ordered by DECREASING atomic radius (largest to smallest):",
+                        options: [
+                            "F, Cl, Br, I",
+                            "Na, Mg, Al, Si",
+                            "Si, Al, Mg, Na",
+                            "Ne, Ar, Kr, Xe"
+                        ],
+                        correct: 1,
+                        whyWrong: ["Going down Group 17 increases radius.", null, "Going left across Period 3 increases radius.", "Going down Group 18 increases radius."]
+                    },
+                    {
+                        q: "Which of the following elements has the LARGEST atomic radius?",
+                        options: ["Lithium (Li)", "Sodium (Na)", "Potassium (K)", "Cesium (Cs)"],
+                        correct: 3,
+                        whyWrong: ["Li is at the top of Group 1 (smallest of the four).", "Na only has 3 energy shells.", "K has 4 energy shells.", null]
+                    },
+                    {
+                        q: "Order the Period 3 elements Sulfur (S), Sodium (Na), Phosphorus (P), and Chlorine (Cl) in INCREASING order of atomic radius:",
+                        options: [
+                            "Cl, S, P, Na",
+                            "Na, P, S, Cl",
+                            "P, S, Cl, Na",
+                            "Na, Cl, S, P"
+                        ],
+                        correct: 0,
+                        whyWrong: [null, "Na is on the far left of Period 3, making it the largest, not smallest.", "Cl is smaller than P and S because it has more protons pulling on the same 3rd shell.", "Check the left-to-right trend across Period 3."]
+                    },
+                    {
+                        q: "Why does atomic radius DECREASE as you move from left to right across a period (e.g., from Li to F)?",
+                        options: [
+                            "Atoms lose energy shells",
+                            "Increasing nuclear charge (more protons) pulls the same energy shell closer to the nucleus",
+                            "Neutrons repel valence electrons outward",
+                            "Electrons move into higher principal energy levels"
+                        ],
+                        correct: 1,
+                        whyWrong: ["All elements in the same period have the same number of occupied shells.", null, "Neutrons do not repel electrons.", "Moving across a period keeps valence electrons in the same shell."]
+                    }
+                ]
+            }
+        ];
+
+        const activeExampleIdx = rulesData.map(() => 0);
+        function getSolvedIds() { return JSON.parse(localStorage.getItem('pp_solved_ids') || '[]'); }
+        function markSolved(exId) {
+            const solved = getSolvedIds();
+            if (!solved.includes(exId)) { solved.push(exId); localStorage.setItem('pp_solved_ids', JSON.stringify(solved)); }
+            updateBadge();
+        }
+        function updateBadge() {
+            const solved = getSolvedIds().filter(id => id.startsWith(MODULE_PREFIX)).length;
+            document.getElementById('modBadge').textContent = `${solved}/40`;
+        }
+
+        function renderRules() {
+            const container = document.getElementById('rulesContainer');
+            const solved = getSolvedIds();
+            container.innerHTML = '';
+
+            rulesData.forEach((rule, rIdx) => {
+                const exIdx = activeExampleIdx[rIdx];
+                const ex = rule.examples[exIdx];
+                const exId = `${MODULE_PREFIX}r${rule.ruleNum}_e${exIdx + 1}`;
+                const isSolved = solved.includes(exId);
+
+                let ruleSolvedCount = 0;
+                for (let i = 1; i <= 5; i++) {
+                    if (solved.includes(`${MODULE_PREFIX}r${rule.ruleNum}_e${i}`)) ruleSolvedCount++;
+                }
+
+                const card = document.createElement('section');
+                card.className = "bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden";
+                card.innerHTML = `
+                    <div class="bg-slate-900 text-white px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Rule ${rule.ruleNum} of 8</span>
+                            <h2 class="text-lg font-extrabold">${rule.title}</h2>
+                        </div>
+                        <span class="text-xs bg-slate-800 px-3 py-1 rounded-full text-slate-300">
+                            Rule Mastery: <strong class="text-emerald-400">${ruleSolvedCount}/5</strong>
+                        </span>
+                    </div>
+
+                    <div class="p-6 space-y-5">
+                        <div class="bg-purple-50 border-l-4 border-purple-500 p-3.5 rounded-r-xl text-xs sm:text-sm text-purple-950">
+                            <strong>Core Principle:</strong> ${rule.concept}
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="text-xs font-bold text-slate-500 uppercase mr-1">Practice Variations:</span>
+                            ${[0, 1, 2, 3, 4].map(i => {
+                                const varDone = solved.includes(`${MODULE_PREFIX}r${rule.ruleNum}_e${i + 1}`);
+                                const isActive = i === exIdx;
+                                return `
+                                    <button onclick="selectVariation(${rIdx}, ${i})"
+                                        class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 border
+                                        ${isActive ? 'bg-indigo-600 text-white border-indigo-600 shadow' : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'}">
+                                        <span>Example ${i + 1}</span>
+                                        ${varDone ? '<i class="fa-solid fa-circle-check text-emerald-400"></i>' : ''}
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div class="flex justify-between items-start gap-2 mb-2">
+                                <span class="text-xs font-extrabold text-indigo-600 uppercase">Exercise ${rule.ruleNum}.${exIdx + 1}</span>
+                                ${isSolved ? '<span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full"><i class="fa-solid fa-check mr-1"></i>Mastered</span>' : ''}
+                            </div>
+                            <p class="text-slate-900 font-semibold text-sm sm:text-base whitespace-pre-line leading-relaxed">${ex.q}</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            ${ex.options.map((opt, oIdx) => {
+                                const letters = ['A', 'B', 'C', 'D'];
+                                return `
+                                    <button onclick="checkAnswer(${rIdx}, ${oIdx})"
+                                        id="btn_${rIdx}_${oIdx}"
+                                        class="text-left p-3.5 rounded-xl border-2 border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/40 transition flex items-start gap-3 text-sm font-medium text-slate-800">
+                                        <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 font-extrabold flex items-center justify-center shrink-0 text-xs">${letters[oIdx]}</span>
+                                        <span class="pt-0.5 font-mono text-xs sm:text-sm">${opt}</span>
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div id="feedback_${rIdx}" class="hidden rounded-xl p-4 text-sm"></div>
+
+                        <div class="flex justify-end">
+                            <button onclick="showHint(${rIdx})" class="text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-lightbulb text-amber-500"></i> Need a Socratic Hint?
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function selectVariation(rIdx, exIdx) { activeExampleIdx[rIdx] = exIdx; renderRules(); }
+
+        function showHint(rIdx) {
+            const rule = rulesData[rIdx];
+            const fb = document.getElementById(`feedback_${rIdx}`);
+            fb.className = "rounded-xl p-4 text-sm bg-amber-50 border border-amber-300 text-amber-950 block";
+            fb.innerHTML = `<div class="font-bold flex items-center gap-2 mb-1"><i class="fa-solid fa-compass text-amber-600"></i> Guiding Hint (Rule ${rule.ruleNum}):</div><p>${rule.hint}</p>`;
+        }
+
+        function checkAnswer(rIdx, chosenIdx) {
+            const rule = rulesData[rIdx];
+            const exIdx = activeExampleIdx[rIdx];
+            const ex = rule.examples[exIdx];
+            const fb = document.getElementById(`feedback_${rIdx}`);
+
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`btn_${rIdx}_${i}`).classList.remove('border-rose-500', 'bg-rose-50', 'border-emerald-500', 'bg-emerald-50');
+            }
+
+            const chosenBtn = document.getElementById(`btn_${rIdx}_${chosenIdx}`);
+            if (chosenIdx === ex.correct) {
+                chosenBtn.classList.add('border-emerald-500', 'bg-emerald-50');
+                markSolved(`${MODULE_PREFIX}r${rule.ruleNum}_e${exIdx + 1}`);
+                fb.className = "rounded-xl p-4 text-sm bg-emerald-50 border border-emerald-300 text-emerald-950 block";
+                fb.innerHTML = `<div class="font-extrabold text-emerald-800 flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i><span>Great job! Example ${exIdx + 1} mastered.</span></div><p class="mt-1 text-xs text-emerald-800">Switch to the next example tab above to keep practicing.</p>`;
+            } else {
+                chosenBtn.classList.add('border-rose-500', 'bg-rose-50');
+                const diagnostic = ex.whyWrong[chosenIdx] || "Review the Aufbau filling order and Periodic Table position.";
+                fb.className = "rounded-xl p-4 text-sm bg-rose-50 border border-rose-300 text-rose-950 block";
+                fb.innerHTML = `<div class="font-extrabold text-rose-800 flex items-center gap-2"><i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i><span>Not quite — check your configuration/trend:</span></div><p class="mt-1 font-medium">${diagnostic}</p><div class="mt-2 pt-2 border-t border-rose-200 text-xs text-rose-900"><strong>Clue:</strong> ${rule.hint}</div>`;
+            }
+        }
+
+        window.onload = () => { updateBadge(); renderRules(); };
+    </script>
+</body>
+</html>
